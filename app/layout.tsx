@@ -4,6 +4,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google'
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import { I18nProvider } from "@/lib/i18n"
+import { GoogleAnalytics } from "@/components/google-analytics"
 import './globals.css'
 
 const GA_MEASUREMENT_ID = 'G-B3YR91E98N'
@@ -41,6 +42,7 @@ export default function RootLayout({
             gtag('config', '${GA_MEASUREMENT_ID}');
           `}
         </Script>
+        <GoogleAnalytics />
         <I18nProvider>
           {children}
         </I18nProvider>

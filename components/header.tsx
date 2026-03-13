@@ -29,22 +29,28 @@ export function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-1 md:flex">
           <Link
-            href="#usecases"
+            href="/#usecases"
             className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
           >
             {t("nav.usecases")}
           </Link>
           <Link
-            href="#categories"
+            href="/#categories"
             className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
           >
             {t("nav.categories")}
           </Link>
           <Link
-            href="#skills"
+            href="/#skills"
             className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
           >
             {t("nav.skills")}
+          </Link>
+          <Link
+            href="/install"
+            className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+          >
+            {t("nav.install")}
           </Link>
           <Link
             href="/about"
@@ -96,25 +102,32 @@ export function Header() {
         <div className="border-t border-border/40 bg-background/95 backdrop-blur-xl md:hidden">
           <nav className="flex flex-col gap-1 p-4">
             <Link
-              href="#usecases"
+              href="/#usecases"
               className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t("nav.usecases")}
             </Link>
             <Link
-              href="#categories"
+              href="/#categories"
               className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t("nav.categories")}
             </Link>
             <Link
-              href="#skills"
+              href="/#skills"
               className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t("nav.skills")}
+            </Link>
+            <Link
+              href="/install"
+              className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t("nav.install")}
             </Link>
             <Link
               href="/about"

@@ -28,7 +28,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="#usecases"
+                  href="/#usecases"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {t("nav.usecases")}
@@ -36,10 +36,18 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="#categories"
+                  href="/#categories"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {t("nav.categories")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/install"
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {t("nav.install")}
                 </Link>
               </li>
               <li>
