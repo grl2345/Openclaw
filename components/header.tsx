@@ -53,18 +53,16 @@ export function Header() {
             {t("nav.install")}
           </Link>
           <Link
+            href="/diary"
+            className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+          >
+            {t("nav.diary")}
+          </Link>
+          <Link
             href="/about"
             className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
           >
             {t("nav.about")}
-          </Link>
-          <Link
-            href="https://github.com/AlexAnys/awesome-openclaw-usecases-zh/blob/main/CONTRIBUTING.md"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-          >
-            {t("nav.contribute")}
           </Link>
         </nav>
 
@@ -130,20 +128,18 @@ export function Header() {
               {t("nav.install")}
             </Link>
             <Link
+              href="/diary"
+              className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t("nav.diary")}
+            </Link>
+            <Link
               href="/about"
               className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t("nav.about")}
-            </Link>
-            <Link
-              href="https://github.com/AlexAnys/awesome-openclaw-usecases-zh/blob/main/CONTRIBUTING.md"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("nav.contribute")}
             </Link>
           </nav>
         </div>

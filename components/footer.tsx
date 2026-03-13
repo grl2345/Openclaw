@@ -52,13 +52,18 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="https://github.com/AlexAnys/awesome-openclaw-usecases-zh/blob/main/CONTRIBUTING.md"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  href="/diary"
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {t("nav.contribute")}
-                  <ExternalLink className="h-3 w-3" />
+                  {t("nav.diary")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about#support"
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {t("footer.support")}
                 </Link>
               </li>
             </ul>
