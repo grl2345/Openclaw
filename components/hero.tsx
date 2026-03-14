@@ -56,19 +56,27 @@ export function Hero() {
         <p className="mb-6 text-center text-2xl font-medium text-primary sm:text-3xl lg:text-4xl">
           {t("hero.subtitle")}
         </p>
-        <p className="mb-12 max-w-2xl text-balance text-center text-lg text-muted-foreground">
-          {t("hero.description")}
+        {t("hero.description") && (
+          <p className="mb-4 max-w-2xl text-balance text-center text-lg text-muted-foreground">
+            {t("hero.description")}
+          </p>
+        )}
+        <p className="mb-12 text-center text-sm text-muted-foreground">
+          {t("hero.firstTime")}
         </p>
 
         {/* CTA Buttons */}
-        <div className="mb-16 flex flex-col gap-4 sm:flex-row">
+        <div className="mb-16 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
           <Button size="lg" className="gap-2 px-8" asChild>
-            <Link href="#usecases">
-              {t("hero.cta.start")}
+            <Link href="#quickstart">
+              {t("hero.cta.guide")}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </Button>
           <Button variant="outline" size="lg" className="gap-2 px-8" asChild>
+            <Link href="#usecases">{t("hero.cta.start")}</Link>
+          </Button>
+          <Button variant="ghost" size="lg" className="gap-2 px-6" asChild>
             <Link
               href="https://github.com/AlexAnys/awesome-openclaw-usecases-zh"
               target="_blank"
@@ -78,22 +86,6 @@ export function Hero() {
               {t("hero.cta.github")}
             </Link>
           </Button>
-        </div>
-
-        {/* Stats */}
-        <div className="grid w-full max-w-3xl grid-cols-3 gap-8">
-          <div className="flex flex-col items-center">
-            <span className="mb-2 font-mono text-4xl font-bold text-foreground sm:text-5xl">40+</span>
-            <span className="text-center text-sm text-muted-foreground">{t("hero.stats.usecases")}</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="mb-2 font-mono text-4xl font-bold text-foreground sm:text-5xl">7</span>
-            <span className="text-center text-sm text-muted-foreground">{t("hero.stats.categories")}</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="mb-2 font-mono text-4xl font-bold text-foreground sm:text-5xl">800+</span>
-            <span className="text-center text-sm text-muted-foreground">{t("hero.stats.stars")}</span>
-          </div>
         </div>
       </div>
 

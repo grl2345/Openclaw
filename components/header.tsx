@@ -29,6 +29,12 @@ export function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-1 md:flex">
           <Link
+            href="/#quickstart"
+            className="rounded-lg px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10 hover:text-primary"
+          >
+            {t("nav.quickstart")}
+          </Link>
+          <Link
             href="/#usecases"
             className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
           >
@@ -99,6 +105,13 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="border-t border-border/40 bg-background/95 backdrop-blur-xl md:hidden">
           <nav className="flex flex-col gap-1 p-4">
+            <Link
+              href="/#quickstart"
+              className="rounded-lg px-4 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t("nav.quickstart")}
+            </Link>
             <Link
               href="/#usecases"
               className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"

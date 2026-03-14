@@ -20,8 +20,14 @@ export interface Skill {
   operations: string[]
   /** ClawHub 安装用 slug，如 steipete/slack */
   installSlug?: string
-  /** 详情/文档链接 */
+  /** 详情/文档链接（外链） */
   externalUrl: string
+  /** 站内路径，优先于 externalUrl，不新开窗口 */
+  path?: string
+  /** 是否必装，卡片上会显示「必装」标注 */
+  required?: boolean
+  /** 免费 / 付费 / 免费额度（有免费额度，超出需付费） */
+  pricing?: "free" | "paid" | "freemium"
 }
 
 export const skillCategories: { id: SkillCategoryId; nameKey: string }[] = [
@@ -35,6 +41,79 @@ export const skillCategories: { id: SkillCategoryId; nameKey: string }[] = [
 ]
 
 export const skills: Skill[] = [
+  // 必装（4 个，点击进站内指南页看安装/配置/命令）
+  {
+    id: "find-skills",
+    name: { zh: "Find Skills", en: "Find Skills" },
+    description: {
+      zh: "技能导航仪，快速发现、安装、更新所需技能，不知道装啥时先装它。",
+      en: "Discover, install, update skills. Install this first when you don’t know what to add.",
+    },
+    category: "productivity",
+    tags: ["技能发现", "ClawHub"],
+    operations: [
+      "npx clawhub@latest install find-skills",
+      "openclaw skills search excel",
+    ],
+    externalUrl: "/skills-guide",
+    path: "/skills-guide#find-skills",
+    required: true,
+    pricing: "free",
+  },
+  {
+    id: "tavily-search",
+    name: { zh: "Tavily Search", en: "Tavily Search" },
+    description: {
+      zh: "给 AI 用的精准搜索，结果干净、能联网，适合查最新信息与深度调研。",
+      en: "AI-optimized search, clean results, real-time web. For latest info and deep research.",
+    },
+    category: "research",
+    tags: ["搜索", "联网"],
+    operations: [
+      "npx clawhub@latest install tavily-search",
+      "openclaw chat \"用tavily-search --deep 搜索...\"",
+    ],
+    externalUrl: "/skills-guide",
+    path: "/skills-guide#tavily",
+    required: true,
+    pricing: "freemium",
+  },
+  {
+    id: "multi-search-engine",
+    name: { zh: "Multi Search Engine", en: "Multi Search Engine" },
+    description: {
+      zh: "聚合 17 个搜索引擎，无需 API Key，支持隐私搜索与知识计算（WolframAlpha）。",
+      en: "17 search engines in one, no API key. Privacy search and WolframAlpha for math/units.",
+    },
+    category: "research",
+    tags: ["多引擎", "隐私搜索"],
+    operations: [
+      "npx clawhub@latest install multi-search-engine",
+      "openclaw chat \"用multi-search-engine搜索...\"",
+    ],
+    externalUrl: "/skills-guide",
+    path: "/skills-guide#multi-search",
+    required: true,
+    pricing: "free",
+  },
+  {
+    id: "office-automation",
+    name: { zh: "Office-Automation", en: "Office-Automation" },
+    description: {
+      zh: "周报、邮件、日程、Excel 一条龙，需配置邮箱与日程同步后使用。",
+      en: "Reports, email, calendar, Excel. Requires mail and calendar config.",
+    },
+    category: "productivity",
+    tags: ["办公", "日程", "邮件"],
+    operations: [
+      "npx clawhub@latest install office-automation",
+      "openclaw skills configure office-automation",
+    ],
+    externalUrl: "/skills-guide",
+    path: "/skills-guide#office-automation",
+    required: true,
+    pricing: "free",
+  },
   // Git & GitHub
   {
     id: "agent-commons",
@@ -51,6 +130,7 @@ export const skills: Skill[] = [
       "challenge_reasoning()  # 质疑并修正推理",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#git--github",
+    pricing: "free",
   },
   {
     id: "alex-session-wrap-up",
@@ -67,6 +147,7 @@ export const skills: Skill[] = [
       "extract_learnings()  # 提取学习要点",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#git--github",
+    pricing: "free",
   },
   {
     id: "arc-skill-gitops",
@@ -83,6 +164,7 @@ export const skills: Skill[] = [
       "list_versions()  # 查看版本历史",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#git--github",
+    pricing: "free",
   },
   // Productivity & Tasks
   {
@@ -100,6 +182,7 @@ export const skills: Skill[] = [
       "4todo complete <id>  # 标记完成",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#productivity--tasks",
+    pricing: "free",
   },
   {
     id: "adhd-daily-planner",
@@ -116,6 +199,7 @@ export const skills: Skill[] = [
       "log_completion(\"...\")  # 记录完成项",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#productivity--tasks",
+    pricing: "free",
   },
   {
     id: "agent-autopilot",
@@ -132,6 +216,7 @@ export const skills: Skill[] = [
       "weekly_report()  # 获取本周总结",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#productivity--tasks",
+    pricing: "free",
   },
   {
     id: "asana",
@@ -148,6 +233,7 @@ export const skills: Skill[] = [
       "asana update task <id> --complete",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#productivity--tasks",
+    pricing: "freemium",
   },
   // Communication
   {
@@ -165,6 +251,7 @@ export const skills: Skill[] = [
       "feishu_calendar list week  # 本周日程",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#calendar--scheduling",
+    pricing: "freemium",
   },
   {
     id: "agent-mail",
@@ -181,6 +268,7 @@ export const skills: Skill[] = [
       "reply_mail(id, \"...\")  # 回复邮件",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#communication",
+    pricing: "free",
   },
   {
     id: "aliyun-asr",
@@ -196,6 +284,7 @@ export const skills: Skill[] = [
       "transcribe_from_feishu(message_id)  # 飞书语音消息转写",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#communication",
+    pricing: "paid",
   },
   // DevOps & Cloud
   {
@@ -213,6 +302,7 @@ export const skills: Skill[] = [
       "n8n workflow trigger <id>  # 通过 webhook 触发",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#devops--cloud",
+    pricing: "free",
   },
   {
     id: "agentic-devops",
@@ -229,6 +319,7 @@ export const skills: Skill[] = [
       "health_check()  # 健康检查",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#devops--cloud",
+    pricing: "free",
   },
   {
     id: "agent-metrics-osiris",
@@ -245,6 +336,7 @@ export const skills: Skill[] = [
       "metrics_alert_threshold(...)  # 设置告警阈值",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#devops--cloud",
+    pricing: "free",
   },
   // Search & Research
   {
@@ -262,6 +354,7 @@ export const skills: Skill[] = [
       "literature_review(\"topic\", limit=20)  # 文献综述",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#search--research",
+    pricing: "free",
   },
   {
     id: "2nd-brain",
@@ -278,6 +371,7 @@ export const skills: Skill[] = [
       "memory_search(\"what games has Raven played\")  # 自然语言问句检索",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#coding-agents--ides",
+    pricing: "free",
   },
   {
     id: "braindb",
@@ -294,6 +388,7 @@ export const skills: Skill[] = [
       "memory_recall(embedding)  # 按向量回忆",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#notes--pkm",
+    pricing: "free",
   },
   // Calendar & Scheduling
   {
@@ -311,6 +406,7 @@ export const skills: Skill[] = [
       "gcal list --range week  # 本周日程",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#calendar--scheduling",
+    pricing: "freemium",
   },
   {
     id: "apple-reminders",
@@ -327,6 +423,7 @@ export const skills: Skill[] = [
       "remindctl complete <id>  # 标记完成",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#calendar--scheduling",
+    pricing: "free",
   },
   // Notes & PKM
   {
@@ -344,6 +441,7 @@ export const skills: Skill[] = [
       "memo search \"关键词\"  # 搜索笔记",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#notes--pkm",
+    pricing: "free",
   },
   {
     id: "bear-notes",
@@ -360,6 +458,7 @@ export const skills: Skill[] = [
       "grizzly open <id>  # 打开指定笔记",
     ],
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#notes--pkm",
+    pricing: "free",
   },
 ]
 

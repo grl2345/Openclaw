@@ -2,12 +2,10 @@
 
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
-import { Categories } from "@/components/categories"
+import { QuickStart } from "@/components/quickstart"
 import { FeaturedUseCases } from "@/components/featured-usecases"
 import { AllUseCases } from "@/components/all-usecases"
 import { FeaturedSkills } from "@/components/featured-skills"
-import { Features } from "@/components/features"
-import { CTA } from "@/components/cta"
 import { Footer } from "@/components/footer"
 
 export default function Home() {
@@ -16,12 +14,10 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Categories />
+        <QuickStart />
         <FeaturedUseCases />
         <AllUseCases />
         <FeaturedSkills />
-        <Features />
-        <CTA />
       </main>
       <Footer />
     </div>

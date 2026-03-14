@@ -27,7 +27,7 @@ export function AllUseCases() {
   const { t } = useI18n()
 
   return (
-    <section className="relative pt-12 pb-24 sm:pt-16 sm:pb-32">
+    <section id="categories" className="relative scroll-mt-24 pt-12 pb-24 sm:pt-16 sm:pb-32">
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute right-0 top-1/4">

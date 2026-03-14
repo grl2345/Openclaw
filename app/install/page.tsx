@@ -411,6 +411,15 @@ export default function InstallPage() {
           </Tabs>
         </header>
 
+        <div className="mb-8 rounded-xl border border-primary/20 bg-primary/5 p-4 text-center">
+          <p className="text-sm text-muted-foreground">
+            {isZh ? "部署完成后，默认仅具备基础对话能力，需安装必装 Skills 才能解锁实操功能。" : "After deployment, only basic chat is available. Install required Skills to unlock real capabilities."}
+          </p>
+          <Link href="/#skills" className="mt-2 inline-block text-sm font-medium text-primary hover:underline">
+            {isZh ? "→ 在首页「精选 Skills」中查看「必装 Skills 指南」" : "→ See Required Skills Guide in Featured Skills on homepage"}
+          </Link>
+        </div>
+
         <p className="text-center text-xs text-muted-foreground">
           {isZh ? "更多方式（自建服务器、Docker 等）可参考 OpenClaw 官方文档。" : "For self-hosted or Docker, see OpenClaw official docs."}
         </p>

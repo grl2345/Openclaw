@@ -46,20 +46,29 @@ export function FeaturedSkills() {
 
         {/* Skills Grid */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {skills.map((skill) => (
-            <a
-              key={skill.id}
-              href={skill.externalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative overflow-hidden rounded-xl border border-border/60 bg-card/50 p-5 backdrop-blur-sm transition-all hover:border-primary/50 hover:bg-card"
-            >
-              <div className="absolute inset-0 bg-primary/5 opacity-0 transition-opacity group-hover:opacity-100" />
-              <div className="relative">
+          {skills.map((skill) => {
+            const className = "group relative overflow-hidden rounded-xl border border-border/60 bg-card/50 p-5 backdrop-blur-sm transition-all hover:border-primary/50 hover:bg-card"
+            const content = (
+              <>
+                <div className="absolute inset-0 bg-primary/5 opacity-0 transition-opacity group-hover:opacity-100" />
+                <div className="relative">
                 <div className="mb-2 flex flex-wrap items-center gap-2">
                   <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                     {getCategoryName(skill.category)}
                   </span>
+                  {skill.required && (
+                    <Badge variant="default" className="text-xs">
+                      {t("skills.required")}
+                    </Badge>
+                  )}
+                  {skill.pricing && (
+                    <Badge
+                      variant={skill.pricing === "paid" ? "destructive" : "secondary"}
+                      className="text-xs"
+                    >
+                      {t(`skills.pricing.${skill.pricing}`)}
+                    </Badge>
+                  )}
                 </div>
                 <h3 className="mb-2 text-base font-semibold text-foreground group-hover:text-primary">
                   {locale === "zh" ? skill.name.zh : skill.name.en}
@@ -92,9 +101,25 @@ export function FeaturedSkills() {
                     </Badge>
                   ))}
                 </div>
-              </div>
-            </a>
-          ))}
+                </div>
+              </>
+            )
+            return skill.path ? (
+              <Link key={skill.id} href={skill.path} className={className}>
+                {content}
+              </Link>
+            ) : (
+              <a
+                key={skill.id}
+                href={skill.externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={className}
+              >
+                {content}
+              </a>
+            )
+          })}
         </div>
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
