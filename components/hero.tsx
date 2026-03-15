@@ -36,7 +36,7 @@ export function Hero() {
           {t("hero.subtitle.after")}
         </p>
         {t("hero.description") && (
-          <p className="mb-2 max-w-2xl text-balance text-center text-2xl text-muted-foreground">
+          <p className="mb-2 max-w-2xl text-balance text-center text-lg text-muted-foreground">
             {t("hero.description")}
           </p>
         )}
