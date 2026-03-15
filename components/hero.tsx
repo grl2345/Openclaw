@@ -10,7 +10,7 @@ export function Hero() {
   const { t } = useI18n()
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[oklch(0.98_0.01_30)] pt-24 sm:pt-28 dark:bg-background">
+    <section className="relative min-h-screen overflow-hidden bg-[oklch(0.98_0.01_30)] pt-20 sm:pt-24 dark:bg-background">
       <div className="absolute inset-0 overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.06] dark:opacity-[0.04]"
@@ -28,9 +28,9 @@ export function Hero() {
         <div className="absolute bottom-0 right-0 h-[300px] w-[500px] rounded-full bg-primary/[0.05] blur-[80px] dark:bg-primary/10" />
       </div>
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-4 pt-28 pb-20 sm:px-6 sm:pt-32 sm:pb-24 lg:px-8 lg:pt-36 lg:pb-28">
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-4 pt-16 pb-20 sm:px-6 sm:pt-20 sm:pb-24 lg:px-8 lg:pt-24 lg:pb-28">
         {/* 开源免费 · 收录全网最全教程与用例 */}
-        <div className="-mt-6 mb-6 flex flex-wrap items-center justify-center gap-2">
+        <div className="mb-5 flex flex-wrap items-center justify-center gap-2">
           <span className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-muted/60 px-3 py-1.5 text-sm font-medium text-foreground">
             <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
             <Zap className="h-4 w-4 text-muted-foreground" />
