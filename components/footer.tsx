@@ -30,6 +30,7 @@ export function Footer() {
             <ul className="space-y-2.5">
               <li><Link href="/#usecases" className={linkClass}>{t("nav.usecases")}</Link></li>
               <li><Link href="/#categories" className={linkClass}>{t("nav.categories")}</Link></li>
+              <li><Link href="/api-recommend" className={linkClass}>{t("nav.apiRecommend")}</Link></li>
               <li><Link href="/install" className={linkClass}>{t("nav.install")}</Link></li>
               <li><Link href="/diary" className={linkClass}>{t("nav.diary")}</Link></li>
               <li><Link href="/about#support" className={linkClass}>{t("footer.support")}</Link></li>

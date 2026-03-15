@@ -62,6 +62,12 @@ export function Header() {
             {t("nav.skills")}
           </Link>
           <Link
+            href="/api-recommend"
+            className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+          >
+            {t("nav.apiRecommend")}
+          </Link>
+          <Link
             href="/install"
             className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
           >
@@ -150,6 +156,13 @@ export function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               {t("nav.skills")}
+            </Link>
+            <Link
+              href="/api-recommend"
+              className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t("nav.apiRecommend")}
             </Link>
             <Link
               href="/install"
