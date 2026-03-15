@@ -1,37 +1,37 @@
-"use client"
+import { cookies, headers } from "next/headers"
+import { Inter, JetBrains_Mono } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
+import { ClientLayout } from "@/components/client-layout"
+import type { Locale } from "@/lib/i18n"
+import "./globals.css"
 
-import { Inter, JetBrains_Mono } from 'next/font/google'
-import Script from 'next/script'
-import { Analytics } from '@vercel/analytics/next'
-import { I18nProvider } from "@/lib/i18n"
-import { ThemeProvider } from "@/components/theme-provider"
-import { GoogleAnalytics } from "@/components/google-analytics"
-import { BusinessCoopDialog } from "@/components/business-coop-dialog"
-import './globals.css'
-
-const GA_MEASUREMENT_ID = 'G-B3YR91E98N'
-
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 })
 
-const jetbrainsMono = JetBrains_Mono({ 
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 })
 
-// Metadata is defined via generateMetadata or in a separate metadata.ts file for client components
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const cookieStore = await cookies()
+  const headersList = await headers()
+  const localeFromCookie = cookieStore.get("NEXT_LOCALE")?.value
+  const localeFromHeader = headersList.get("x-next-locale")
+  const defaultLocale: Locale =
+    (localeFromCookie === "en" || localeFromCookie === "zh" ? localeFromCookie : null) ??
+    (localeFromHeader === "en" || localeFromHeader === "zh" ? localeFromHeader : null) ??
+    "zh"
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={defaultLocale === "zh" ? "zh-CN" : "en"} suppressHydrationWarning>
       <head>
-        {/* Google AdSense - 每个页面都会通过根 layout 自动包含 */}
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5612094173556578"
@@ -39,26 +39,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
-        {/* Google tag (gtag.js) */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}');
-          `}
-        </Script>
-        <GoogleAnalytics />
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <I18nProvider>
-            {children}
-            <BusinessCoopDialog />
-          </I18nProvider>
-        </ThemeProvider>
+        <ClientLayout defaultLocale={defaultLocale}>{children}</ClientLayout>
         <Analytics />
       </body>
     </html>

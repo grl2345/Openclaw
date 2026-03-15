@@ -407,9 +407,17 @@ const translations = {
 }
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined)
+const LOCALE_COOKIE = "NEXT_LOCALE"
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("zh")
+export function I18nProvider({ children, initialLocale }: { children: ReactNode; initialLocale?: Locale }) {
+  const [locale, setLocaleState] = useState<Locale>(initialLocale ?? "zh")
+
+  const setLocale = useCallback((next: Locale) => {
+    setLocaleState(next)
+    if (typeof document !== "undefined") {
+      document.cookie = `${LOCALE_COOKIE}=${next};path=/;max-age=${60 * 60 * 24 * 365}`
+    }
+  }, [])
 
   const t = useCallback(
     (key: string): string => {
