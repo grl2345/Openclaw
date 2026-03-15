@@ -4,6 +4,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google'
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/next'
 import { I18nProvider } from "@/lib/i18n"
+import { ThemeProvider } from "@/components/theme-provider"
 import { GoogleAnalytics } from "@/components/google-analytics"
 import './globals.css'
 
@@ -27,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Google AdSense - 每个页面都会通过根 layout 自动包含 */}
         <script
@@ -51,9 +52,11 @@ export default function RootLayout({
           `}
         </Script>
         <GoogleAnalytics />
-        <I18nProvider>
-          {children}
-        </I18nProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <I18nProvider>
+            {children}
+          </I18nProvider>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

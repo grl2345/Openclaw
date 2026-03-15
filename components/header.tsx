@@ -1,18 +1,27 @@
 "use client"
 
 import Link from "next/link"
+import { useTheme } from "next-themes"
 import { useI18n } from "@/lib/i18n"
 import { Button } from "@/components/ui/button"
 import { LobsterIcon } from "@/components/lobster-icon"
-import { Menu, X, Github, Globe } from "lucide-react"
-import { useState } from "react"
+import { Menu, X, Github, Globe, Sun, Moon } from "lucide-react"
+import { useState, useEffect } from "react"
 
 export function Header() {
   const { t, locale, setLocale } = useI18n()
+  const { theme, setTheme } = useTheme()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
 
   const toggleLocale = () => {
     setLocale(locale === "zh" ? "en" : "zh")
+  }
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark")
   }
 
   return (
@@ -74,6 +83,15 @@ export function Header() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            aria-label={theme === "dark" ? "切换到明亮模式" : "切换到暗色模式"}
+            className="shrink-0"
+          >
+            {mounted ? (theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />) : <Moon className="h-4 w-4" />}
+          </Button>
           <Button variant="ghost" size="sm" onClick={toggleLocale} className="gap-2">
             <Globe className="h-4 w-4" />
             <span className="hidden sm:inline">{t("lang.switch")}</span>

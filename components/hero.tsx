@@ -12,6 +12,7 @@ export function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-[oklch(0.98_0.01_30)] pt-16 dark:bg-background">
       <div className="absolute inset-0 overflow-hidden">
+        {/* 明亮：淡红网格；暗色：淡网格 + 星空点缀 */}
         <div
           className="absolute inset-0 opacity-[0.06] dark:opacity-[0.04]"
           style={{
@@ -20,8 +21,12 @@ export function Hero() {
             backgroundSize: "48px 48px",
           }}
         />
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[500px] w-[700px] rounded-full bg-primary/[0.08] blur-[100px]" />
-        <div className="absolute bottom-0 right-0 h-[300px] w-[500px] rounded-full bg-primary/[0.05] blur-[80px]" />
+        <div className="absolute inset-0 hidden dark:block opacity-[0.15]" style={{
+          backgroundImage: "radial-gradient(circle, white 1.2px, transparent 1.2px)",
+          backgroundSize: "36px 36px",
+        }} />
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[500px] w-[700px] rounded-full bg-primary/[0.08] blur-[100px] dark:bg-primary/20" />
+        <div className="absolute bottom-0 right-0 h-[300px] w-[500px] rounded-full bg-primary/[0.05] blur-[80px] dark:bg-primary/10" />
       </div>
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
