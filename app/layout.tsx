@@ -52,7 +52,7 @@ export default function RootLayout({
           `}
         </Script>
         <GoogleAnalytics />
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <I18nProvider>
             {children}
           </I18nProvider>
