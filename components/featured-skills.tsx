@@ -122,26 +122,6 @@ export function FeaturedSkills() {
           })}
         </div>
 
-        <p className="mt-6 text-center text-sm text-muted-foreground">
-          {t("skills.source")} ·{" "}
-          <Link
-            href={SKILLS_SOURCE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-foreground"
-          >
-            GitHub
-          </Link>
-          {" · "}
-          <Link
-            href="https://clawhub.io"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-foreground"
-          >
-            ClawHub
-          </Link>
-        </p>
       </div>
     </section>
   )

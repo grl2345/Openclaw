@@ -22,7 +22,7 @@ export default function AboutPage() {
             {isZh ? (
               <>
                 <p>
-                  OpenClaw Market 是一个开源、社区驱动的 AI 智能体用例合集，旨在帮助中文用户发现并实践 AI 的无限可能。
+                  OpenClaw Hub 是一个开源、社区驱动的 AI 智能体用例合集，旨在帮助中文用户发现并实践 AI 的无限可能。
                 </p>
                 <p>
                   我们收集并整理经过社区验证的真实场景用例，覆盖飞书、钉钉、企业微信、小红书等国内生态，以及自动化办公、创意构建、研究与学习等多个领域。
@@ -34,7 +34,7 @@ export default function AboutPage() {
             ) : (
               <>
                 <p>
-                  OpenClaw Market is an open-source, community-driven collection of AI agent use cases, helping users discover and practice the possibilities of AI.
+                  OpenClaw Hub is an open-source, community-driven collection of AI agent use cases, helping users discover and practice the possibilities of AI.
                 </p>
                 <p>
                   We curate verified real-world scenarios, covering collaboration platforms like Feishu, DingTalk, WeCom, and Xiaohongshu, as well as office automation, creative building, research, and more.

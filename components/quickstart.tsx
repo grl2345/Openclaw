@@ -11,7 +11,7 @@ export function QuickStart() {
   const steps = [
     {
       step: 1,
-      icon: <Rocket className="h-6 w-6" />,
+      icon: Rocket,
       titleKey: "quickstart.step1.title" as const,
       descKey: "quickstart.step1.desc" as const,
       href: "/install",
@@ -19,7 +19,7 @@ export function QuickStart() {
     },
     {
       step: 2,
-      icon: <Package className="h-6 w-6" />,
+      icon: Package,
       titleKey: "quickstart.step2.title" as const,
       descKey: "quickstart.step2.desc" as const,
       href: "/#skills",
@@ -27,7 +27,7 @@ export function QuickStart() {
     },
     {
       step: 3,
-      icon: <MessageSquare className="h-6 w-6" />,
+      icon: MessageSquare,
       titleKey: "quickstart.step3.title" as const,
       descKey: "quickstart.step3.desc" as const,
       href: "/#usecases",
@@ -36,37 +36,79 @@ export function QuickStart() {
   ]
 
   return (
-    <section id="quickstart" className="relative scroll-mt-24 border-t border-border/40 bg-muted/20 py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <h2 className="mb-2 text-2xl font-bold text-foreground sm:text-3xl">
+    <section
+      id="quickstart"
+      className="relative scroll-mt-24 overflow-hidden border-t border-border/40 py-20 sm:py-24 lg:py-28"
+    >
+      {/* 背景：微渐变 + 网格 */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.03] dark:opacity-[0.06]"
+        style={{
+          backgroundImage: `radial-gradient(ellipse 80% 50% at 50% 0%, var(--primary) 0%, transparent 70%)`,
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.04] dark:opacity-[0.03]"
+        style={{
+          backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px),
+            linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
+          backgroundSize: "64px 64px",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* 标题区 */}
+        <div className="mb-14 text-center sm:mb-16">
+          <span className="mb-4 inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-primary">
+            {t("quickstart.badge")}
+          </span>
+          <h2 className="mb-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[2.5rem]">
             {t("quickstart.title")}
           </h2>
-          <p className="text-sm text-muted-foreground sm:text-base">{t("quickstart.subtitle")}</p>
+          <p className="mx-auto max-w-lg text-base text-muted-foreground sm:text-lg">
+            {t("quickstart.subtitle")}
+          </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-3">
-          {steps.map(({ step, icon, titleKey, descKey, href, ctaKey }) => (
+        {/* 步骤卡片 + 连接线（大屏） */}
+        <div className="relative grid gap-8 sm:grid-cols-3 sm:gap-6 lg:gap-8">
+          {/* 桌面端步骤间装饰线 */}
+          <div
+            className="absolute left-[16.666%] right-[16.666%] top-[72px] hidden h-px bg-gradient-to-r from-transparent via-border/60 to-transparent sm:block"
+            aria-hidden
+          />
+
+          {steps.map(({ step, icon: Icon, titleKey, descKey, href, ctaKey }) => (
             <div
               key={step}
-              className="group relative flex flex-col overflow-hidden rounded-xl border border-border/60 bg-card/50 p-6 backdrop-blur-sm transition-all hover:border-primary/50 hover:bg-card"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-card/80 p-7 shadow-sm backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 sm:p-6 lg:p-8"
             >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                {icon}
+              {/* 步骤角标 */}
+              <div className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-border/40 bg-muted/30 text-sm font-semibold tabular-nums text-muted-foreground transition-colors duration-300 group-hover:border-primary/30 group-hover:bg-primary/5 group-hover:text-primary">
+                {String(step).padStart(2, "0")}
               </div>
-              <span className="absolute right-4 top-4 text-3xl font-bold text-foreground/10">
-                {step}
-              </span>
-              <h3 className="mb-2 text-lg font-semibold text-foreground">
+
+              {/* 图标 */}
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary ring-1 ring-primary/10 transition-all duration-300 group-hover:from-primary/20 group-hover:to-primary/10 group-hover:ring-primary/20">
+                <Icon className="h-7 w-7" />
+              </div>
+
+              <h3 className="mb-2 text-xl font-semibold tracking-tight text-foreground">
                 {t(titleKey)}
               </h3>
-              <p className="mb-4 flex-1 text-sm text-muted-foreground">
+              <p className="mb-6 flex-1 text-sm leading-relaxed text-muted-foreground">
                 {t(descKey)}
               </p>
-              <Button variant="outline" size="sm" className="w-fit gap-2" asChild>
-                <Link href={href}>
+
+              <Button
+                variant="outline"
+                size="sm"
+                className="group/btn w-fit gap-2 rounded-lg border-border/60 bg-background/60 font-medium transition-all hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+                asChild
+              >
+                <Link href={href} className="inline-flex items-center gap-2">
                   {t(ctaKey)}
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 ease-out group-hover/btn:translate-x-0.5" />
                 </Link>
               </Button>
             </div>

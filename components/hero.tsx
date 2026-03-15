@@ -3,16 +3,15 @@
 import { useI18n } from "@/lib/i18n"
 import { Button } from "@/components/ui/button"
 import { LobsterIcon } from "@/components/lobster-icon"
-import { ArrowRight, Github } from "lucide-react"
+import { ArrowRight, Github, Zap } from "lucide-react"
 import Link from "next/link"
 
 export function Hero() {
   const { t } = useI18n()
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[oklch(0.98_0.01_30)] pt-16 dark:bg-background">
+    <section className="relative min-h-screen overflow-hidden bg-[oklch(0.98_0.01_30)] pt-24 sm:pt-28 dark:bg-background">
       <div className="absolute inset-0 overflow-hidden">
-        {/* 明亮：淡红网格；暗色：淡网格 + 星空点缀 */}
         <div
           className="absolute inset-0 opacity-[0.06] dark:opacity-[0.04]"
           style={{
@@ -29,44 +28,49 @@ export function Hero() {
         <div className="absolute bottom-0 right-0 h-[300px] w-[500px] rounded-full bg-primary/[0.05] blur-[80px] dark:bg-primary/10" />
       </div>
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
-        {/* logo 稍微靠上 */}
-        <div className="logo-float -mt-8 mb-4">
-          <LobsterIcon size={220} className="h-[160px] w-[160px] sm:h-[220px] sm:w-[220px]" />
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-4 pt-28 pb-20 sm:px-6 sm:pt-32 sm:pb-24 lg:px-8 lg:pt-36 lg:pb-28">
+        {/* 开源免费 · 收录全网最全教程与用例 */}
+        <div className="-mt-6 mb-6 flex flex-wrap items-center justify-center gap-2">
+          <span className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-muted/60 px-3 py-1.5 text-sm font-medium text-foreground">
+            <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
+            <Zap className="h-4 w-4 text-muted-foreground" />
+            {t("hero.tutorialBadge")}
+          </span>
         </div>
-        {/* 副标题 */}
-        <p className="mb-4 text-center text-3xl font-medium text-foreground sm:text-4xl lg:text-5xl">
-          {t("hero.subtitle.before")}
-          <span className="text-primary">{t("hero.subtitle.highlight")}</span>
-          {t("hero.subtitle.after")}
-        </p>
-        {t("hero.description") && (
-          <p className="mb-2 max-w-2xl text-balance text-center text-lg text-muted-foreground">
-            {t("hero.description")}
-          </p>
-        )}
-        <p className="mb-6 text-center text-lg text-muted-foreground">
-          {t("hero.firstTime")}
+
+        {/* Logo */}
+        <div className="logo-float mb-6">
+          <LobsterIcon size={180} className="h-[140px] w-[140px] sm:h-[180px] sm:w-[180px]" />
+        </div>
+
+        {/* 大标题 */}
+        <h1 className="mb-4 text-center text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
+          {t("hero.mainTitle").split(t("hero.mainTitle.highlight"))[0]}
+          <span className="text-primary">{t("hero.mainTitle.highlight")}</span>
+          {t("hero.mainTitle").split(t("hero.mainTitle.highlight"))[1]}
+        </h1>
+        <p className="mb-8 max-w-xl text-center text-base text-muted-foreground sm:text-lg">
+          {t("hero.mainSubtitle")}
         </p>
 
         {/* CTA */}
         <div className="mb-12 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
-          <Button size="lg" className="gap-2 px-8 bg-primary text-primary-foreground hover:bg-primary/90" asChild>
-            <Link href="#quickstart">
+          <Button size="lg" className="group gap-2 px-8 bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+            <a href="#quickstart" className="inline-flex items-center gap-2">
               {t("hero.cta.guide")}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+              <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-0.5" />
+            </a>
           </Button>
           <Button variant="outline" size="lg" className="gap-2 px-8 border-border bg-background" asChild>
-            <Link href="#usecases">{t("hero.cta.start")}</Link>
+            <a href="#usecases">{t("hero.cta.start")}</a>
           </Button>
           <Link
-            href="https://github.com/AlexAnys/awesome-openclaw-usecases-zh"
+            href="https://github.com/openclaw/openclaw"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-200 ease-out hover:text-foreground"
           >
-            <Github className="h-4 w-4" />
+            <Github className="h-4 w-4 shrink-0 transition-transform duration-200 ease-out hover:scale-110" />
             {t("hero.cta.github")}
           </Link>
         </div>

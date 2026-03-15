@@ -35,56 +35,37 @@ export function Header() {
           <span className="text-lg font-bold text-foreground">{t("brand.name")}</span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-1 md:flex">
-          <Link
-            href="/#quickstart"
-            className="rounded-lg px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10 hover:text-primary"
-          >
-            {t("nav.quickstart")}
-          </Link>
-          <Link
-            href="/#usecases"
-            className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-          >
-            {t("nav.usecases")}
-          </Link>
-          <Link
-            href="/#categories"
-            className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-          >
-            {t("nav.categories")}
-          </Link>
-          <Link
-            href="/#skills"
-            className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-          >
-            {t("nav.skills")}
-          </Link>
-          <Link
-            href="/api-recommend"
-            className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-          >
-            {t("nav.apiRecommend")}
-          </Link>
-          <Link
-            href="/install"
-            className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-          >
-            {t("nav.install")}
-          </Link>
-          <Link
-            href="/diary"
-            className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-          >
-            {t("nav.diary")}
-          </Link>
-          <Link
-            href="/about"
-            className="rounded-lg px-4 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-          >
-            {t("nav.about")}
-          </Link>
+        {/* Desktop Navigation：上手 → 浏览 → 更多 */}
+        <nav className="hidden items-center gap-3 md:flex">
+          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+            <a href="/#quickstart" className="rounded-md px-3 py-2 font-medium transition-colors hover:text-foreground">
+              {t("nav.quickstart")}
+            </a>
+            <Link href="/install" className="rounded-md px-3 py-2 transition-colors hover:text-foreground">
+              {t("nav.install")}
+            </Link>
+          </div>
+          <span className="h-4 w-px bg-border/60" aria-hidden />
+          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+            <Link href="/#usecases" className="rounded-md px-3 py-2 transition-colors hover:text-foreground">
+              {t("nav.usecases")}
+            </Link>
+            <Link href="/#skills" className="rounded-md px-3 py-2 transition-colors hover:text-foreground">
+              {t("nav.skills")}
+            </Link>
+          </div>
+          <span className="h-4 w-px bg-border/40" aria-hidden />
+          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+            <Link href="/api-recommend" className="rounded-md px-3 py-2 transition-colors hover:text-foreground">
+              {t("nav.apiRecommend")}
+            </Link>
+            <Link href="/news" className="rounded-md px-3 py-2 transition-colors hover:text-foreground">
+              {t("nav.news")}
+            </Link>
+            <Link href="/about" className="rounded-md px-3 py-2 transition-colors hover:text-foreground">
+              {t("nav.about")}
+            </Link>
+          </div>
         </nav>
 
         {/* Right Actions */}
@@ -125,66 +106,32 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu：上手 → 浏览 → 资源，与桌面顺序一致 */}
       {mobileMenuOpen && (
         <div className="border-t border-border/40 bg-background/95 backdrop-blur-xl md:hidden">
-          <nav className="flex flex-col gap-1 p-4">
-            <Link
-              href="/#quickstart"
-              className="rounded-lg px-4 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+          <nav className="flex flex-col gap-0 p-4">
+            <p className="mb-1 px-3 text-[10px] uppercase tracking-wider text-muted-foreground/70">
+              {t("nav.group.start")}
+            </p>
+            <a href="/#quickstart" onClick={() => setMobileMenuOpen(false)} className="rounded-lg px-4 py-2.5 text-sm font-medium text-primary hover:bg-primary/10">
               {t("nav.quickstart")}
-            </Link>
-            <Link
-              href="/#usecases"
-              className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("nav.usecases")}
-            </Link>
-            <Link
-              href="/#categories"
-              className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("nav.categories")}
-            </Link>
-            <Link
-              href="/#skills"
-              className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("nav.skills")}
-            </Link>
-            <Link
-              href="/api-recommend"
-              className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("nav.apiRecommend")}
-            </Link>
-            <Link
-              href="/install"
-              className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("nav.install")}
-            </Link>
-            <Link
-              href="/diary"
-              className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("nav.diary")}
-            </Link>
-            <Link
-              href="/about"
-              className="rounded-lg px-4 py-3 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("nav.about")}
-            </Link>
+            </a>
+            <Link href="/install" className="rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>{t("nav.install")}</Link>
+            <div className="mt-3 flex flex-col border-b border-border/40 pb-3">
+              <p className="mb-1 px-3 text-[10px] uppercase tracking-wider text-muted-foreground/70">
+                {t("nav.group.browse")}
+              </p>
+              <Link href="/#usecases" className="rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>{t("nav.usecases")}</Link>
+              <Link href="/#skills" className="rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>{t("nav.skills")}</Link>
+            </div>
+            <div className="mt-2">
+              <p className="mb-1 px-3 text-[10px] uppercase tracking-wider text-muted-foreground/70">
+                {t("footer.resources")}
+              </p>
+              <Link href="/api-recommend" className="rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>{t("nav.apiRecommend")}</Link>
+              <Link href="/news" className="rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>{t("nav.news")}</Link>
+              <Link href="/about" className="rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>{t("nav.about")}</Link>
+            </div>
           </nav>
         </div>
       )}

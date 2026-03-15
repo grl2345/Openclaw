@@ -6,6 +6,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { I18nProvider } from "@/lib/i18n"
 import { ThemeProvider } from "@/components/theme-provider"
 import { GoogleAnalytics } from "@/components/google-analytics"
+import { BusinessCoopDialog } from "@/components/business-coop-dialog"
 import './globals.css'
 
 const GA_MEASUREMENT_ID = 'G-B3YR91E98N'
@@ -55,6 +56,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <I18nProvider>
             {children}
+            <BusinessCoopDialog />
           </I18nProvider>
         </ThemeProvider>
         <Analytics />
