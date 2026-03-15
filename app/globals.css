@@ -124,3 +124,44 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* 动画龙虾 logo：浮动 + 触须摆动 */
+@keyframes lobster-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+/* 大 logo：只做上下浮动 + 左右摆动（像钳子动），无缩放 */
+@keyframes logo-float {
+  0%, 100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(3deg);
+  }
+}
+.logo-float {
+  animation: logo-float 3s ease-in-out infinite;
+}
+@keyframes lobster-antenna {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+@keyframes lobster-blink {
+  0%, 90%, 100% { opacity: 1; }
+  95% { opacity: 0.3; }
+}
+.animate-lobster-float {
+  animation: lobster-float 2.5s ease-in-out infinite;
+}
+.animate-lobster-antenna {
+  animation: lobster-antenna 2s ease-in-out infinite;
+}
+.animate-lobster-blink {
+  animation: lobster-blink 3s ease-in-out infinite 1s;
+}
