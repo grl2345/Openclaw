@@ -460,6 +460,267 @@ export const skills: Skill[] = [
     externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#notes--pkm",
     pricing: "free",
   },
+  // Communication (additional)
+  {
+    id: "slack",
+    name: { zh: "Slack", en: "Slack" },
+    description: {
+      zh: "通过 API 管理 Slack 消息、频道与工作区，支持发送通知、搜索历史与机器人回复",
+      en: "Manage Slack messages, channels, and workspaces — send notifications, search history, and bot replies",
+    },
+    category: "communication",
+    tags: ["Slack", "消息", "团队"],
+    operations: [
+      "slack_send(channel, \"...\")  # 发送消息",
+      "slack_search(query)  # 搜索历史消息",
+      "slack_list_channels()  # 列出所有频道",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#communication",
+    pricing: "freemium",
+  },
+  {
+    id: "telegram",
+    name: { zh: "Telegram", en: "Telegram" },
+    description: {
+      zh: "通过 Telegram Bot API 发送消息、管理群组与频道，支持图片、文件与 inline 键盘",
+      en: "Send messages, manage groups and channels via Telegram Bot API — supports images, files, and inline keyboards",
+    },
+    category: "communication",
+    tags: ["Telegram", "消息", "机器人"],
+    operations: [
+      "telegram_send(chat_id, \"...\")  # 发送消息",
+      "telegram_send_photo(chat_id, url)  # 发送图片",
+      "telegram_create_poll(...)  # 创建投票",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#communication",
+    pricing: "free",
+  },
+  {
+    id: "discord-bot",
+    name: { zh: "Discord Bot", en: "Discord Bot" },
+    description: {
+      zh: "通过 Discord API 管理服务器、发送嵌入消息、审核内容与监控频道活动",
+      en: "Manage Discord servers, send rich embeds, moderate content, and monitor channel activity via API",
+    },
+    category: "communication",
+    tags: ["Discord", "社区", "机器人"],
+    operations: [
+      "discord_send(channel_id, embed)  # 发送富文本消息",
+      "discord_moderate(message_id, action)  # 内容审核",
+      "discord_list_members()  # 列出成员",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#communication",
+    pricing: "free",
+  },
+  {
+    id: "whatsapp",
+    name: { zh: "WhatsApp", en: "WhatsApp" },
+    description: {
+      zh: "通过 WhatsApp Business API 发送消息模板、接收用户消息并自动回复",
+      en: "Send message templates, receive user messages, and auto-reply via WhatsApp Business API",
+    },
+    category: "communication",
+    tags: ["WhatsApp", "消息", "商务"],
+    operations: [
+      "whatsapp_send(phone, template, params)  # 发送模板消息",
+      "whatsapp_reply(msg_id, \"...\")  # 回复消息",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#communication",
+    pricing: "paid",
+  },
+  // Git & GitHub (additional)
+  {
+    id: "github-tools",
+    name: { zh: "GitHub Tools", en: "GitHub Tools" },
+    description: {
+      zh: "管理 GitHub 仓库、Issue、PR 与 Actions，支持代码审查辅助与自动化发布",
+      en: "Manage GitHub repos, issues, PRs, and Actions — code review assistance and automated releases",
+    },
+    category: "git",
+    tags: ["GitHub", "仓库", "PR"],
+    operations: [
+      "github_create_issue(repo, title, body)  # 创建 Issue",
+      "github_list_prs(repo)  # 列出 PR",
+      "github_trigger_workflow(repo, workflow_id)  # 触发 Actions",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#git--github",
+    pricing: "freemium",
+  },
+  {
+    id: "gitlab-tools",
+    name: { zh: "GitLab Tools", en: "GitLab Tools" },
+    description: {
+      zh: "管理 GitLab 项目、Merge Request、CI/CD pipeline 与 Issue 追踪",
+      en: "Manage GitLab projects, merge requests, CI/CD pipelines, and issue tracking",
+    },
+    category: "git",
+    tags: ["GitLab", "CI/CD", "MR"],
+    operations: [
+      "gitlab_list_mrs(project_id)  # 列出 MR",
+      "gitlab_trigger_pipeline(project_id)  # 触发 CI",
+      "gitlab_create_issue(project_id, title)  # 创建 Issue",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#git--github",
+    pricing: "freemium",
+  },
+  // Productivity & Tasks (additional)
+  {
+    id: "linear-tasks",
+    name: { zh: "Linear", en: "Linear" },
+    description: {
+      zh: "通过 Linear API 管理工程团队的 Issue、项目与迭代周期",
+      en: "Manage engineering team issues, projects, and cycles via Linear API",
+    },
+    category: "productivity",
+    tags: ["Linear", "项目管理", "工程"],
+    operations: [
+      "linear_create_issue(title, team_id)  # 创建 Issue",
+      "linear_list_issues(team_id, status)  # 按状态筛选",
+      "linear_update_issue(id, status)  # 更新状态",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#productivity--tasks",
+    pricing: "freemium",
+  },
+  {
+    id: "jira-project",
+    name: { zh: "Jira", en: "Jira" },
+    description: {
+      zh: "通过 Jira REST API 管理 Sprint、Issue 与项目进度，支持 Scrum 与看板工作流",
+      en: "Manage sprints, issues, and project progress via Jira REST API — Scrum and Kanban workflows",
+    },
+    category: "productivity",
+    tags: ["Jira", "Sprint", "项目管理"],
+    operations: [
+      "jira_list_issues(project, sprint)  # 查看 Sprint 任务",
+      "jira_create_issue(project, summary, type)  # 新建 Issue",
+      "jira_transition(issue_id, status)  # 更新状态",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#productivity--tasks",
+    pricing: "paid",
+  },
+  {
+    id: "stripe-monitor",
+    name: { zh: "Stripe 支付监控", en: "Stripe Monitor" },
+    description: {
+      zh: "监控 Stripe 支付状态、订阅变化与退款事件，异常时自动通知",
+      en: "Monitor Stripe payment status, subscription changes, and refund events — auto-notify on anomalies",
+    },
+    category: "productivity",
+    tags: ["Stripe", "支付", "监控"],
+    operations: [
+      "stripe_list_payments(limit=10)  # 查看最近支付",
+      "stripe_subscription_status(customer_id)  # 订阅状态",
+      "stripe_refund_summary(period)  # 退款汇总",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#productivity--tasks",
+    pricing: "paid",
+  },
+  // Notes & PKM (additional)
+  {
+    id: "notion-workspace",
+    name: { zh: "Notion", en: "Notion" },
+    description: {
+      zh: "读写 Notion 数据库与页面，支持数据查询、页面创建与工作区自动化",
+      en: "Read and write Notion databases and pages — query data, create pages, and automate workspace workflows",
+    },
+    category: "notes",
+    tags: ["Notion", "知识库", "数据库"],
+    operations: [
+      "notion_query_db(db_id, filter)  # 查询数据库",
+      "notion_create_page(parent_id, title, content)  # 创建页面",
+      "notion_update_page(page_id, properties)  # 更新属性",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#notes--pkm",
+    pricing: "freemium",
+  },
+  {
+    id: "obsidian-vault",
+    name: { zh: "Obsidian", en: "Obsidian" },
+    description: {
+      zh: "读写本地 Obsidian Vault，支持笔记创建、双链管理与知识图谱查询",
+      en: "Read and write local Obsidian Vault — create notes, manage backlinks, and query knowledge graph",
+    },
+    category: "notes",
+    tags: ["Obsidian", "笔记", "知识图谱"],
+    operations: [
+      "obsidian_create(title, content, tags)  # 创建笔记",
+      "obsidian_search(query)  # 全文搜索",
+      "obsidian_get_backlinks(note_path)  # 获取反向链接",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#notes--pkm",
+    pricing: "free",
+  },
+  // Search & Research (additional)
+  {
+    id: "arxiv-search",
+    name: { zh: "ArXiv Search", en: "ArXiv Search" },
+    description: {
+      zh: "检索 ArXiv 最新论文，支持按领域、关键词与作者筛选，并生成摘要",
+      en: "Search latest ArXiv papers by field, keywords, or author — with auto-generated summaries",
+    },
+    category: "research",
+    tags: ["ArXiv", "论文", "学术"],
+    operations: [
+      "arxiv_search(\"diffusion models\", max=10)  # 检索论文",
+      "arxiv_get_abstract(arxiv_id)  # 获取摘要",
+      "arxiv_latest(category=\"cs.AI\")  # 最新 AI 论文",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#search--research",
+    pricing: "free",
+  },
+  {
+    id: "wikipedia-lookup",
+    name: { zh: "Wikipedia", en: "Wikipedia" },
+    description: {
+      zh: "快速查询维基百科词条，支持摘要提取、多语言与相关词条推荐",
+      en: "Quick Wikipedia lookups — extract summaries, multi-language support, and related article suggestions",
+    },
+    category: "research",
+    tags: ["Wikipedia", "百科", "知识"],
+    operations: [
+      "wiki_summary(\"量子计算\")  # 获取词条摘要",
+      "wiki_search(query, lang=\"zh\")  # 搜索词条",
+      "wiki_related(title)  # 获取相关词条",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#search--research",
+    pricing: "free",
+  },
+  // DevOps & Cloud (additional)
+  {
+    id: "aws-tools",
+    name: { zh: "AWS Tools", en: "AWS Tools" },
+    description: {
+      zh: "通过 AWS CLI 与 SDK 管理 EC2、S3、Lambda 与 CloudWatch，支持资源查询与操作",
+      en: "Manage EC2, S3, Lambda, and CloudWatch via AWS CLI and SDK — query and operate cloud resources",
+    },
+    category: "devops",
+    tags: ["AWS", "云服务", "基础设施"],
+    operations: [
+      "aws_ec2_list()  # 列出实例",
+      "aws_s3_upload(bucket, file)  # 上传文件",
+      "aws_cloudwatch_alerts()  # 查看告警",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#devops--cloud",
+    pricing: "paid",
+  },
+  // Calendar & Scheduling (additional)
+  {
+    id: "outlook-calendar",
+    name: { zh: "Outlook Calendar", en: "Outlook Calendar" },
+    description: {
+      zh: "通过 Microsoft Graph API 管理 Outlook 日历：查看、创建与更新会议，支持会议室预订",
+      en: "Manage Outlook Calendar via Microsoft Graph API — view, create, update events, and book meeting rooms",
+    },
+    category: "calendar",
+    tags: ["Outlook", "日历", "Microsoft"],
+    operations: [
+      "outlook_cal_list(date_range)  # 查看日程",
+      "outlook_cal_create(subject, start, end, attendees)  # 创建会议",
+      "outlook_find_free_slot(attendees, duration)  # 查找空闲时间",
+    ],
+    externalUrl: "https://github.com/VoltAgent/awesome-openclaw-skills#calendar--scheduling",
+    pricing: "freemium",
+  },
 ]
 
 export const SKILLS_SOURCE_URL = "https://github.com/VoltAgent/awesome-openclaw-skills"

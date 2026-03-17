@@ -95,7 +95,8 @@ const translations = {
     "hero.cta.start": "看用例",
     "hero.cta.guide": "如何开始",
     "hero.cta.github": "GitHub 仓库",
-    "hero.stats.usecases": "用例数量",
+    "hero.stats.usecases": "精选用例",
+    "hero.stats.skills": "精选技能",
 
     // QuickStart（新手指南）
     "quickstart.title": "3 步上手",
@@ -280,7 +281,7 @@ const translations = {
     "hero.title": "OpenClaw Hub",
     "hero.mainTitle": "Use OpenClaw to build an AI assistant that really gets you",
     "hero.mainTitle.highlight": "OpenClaw",
-    "hero.mainSubtitle": "Deploy → Level up → Ship it. Best tutorials in one place · Just follow along",
+    "hero.mainSubtitle": "The most comprehensive OpenClaw tutorials and use cases — deploy your AI assistant and put it to work in minutes.",
     "hero.subtitle": "Get the most out of OpenClaw — start here",
     "hero.subtitle.before": "Get the most out of ",
     "hero.subtitle.highlight": "OpenClaw",
@@ -293,9 +294,11 @@ const translations = {
     "hero.cta.guide": "How to start",
     "hero.cta.github": "GitHub Repo",
     "hero.stats.usecases": "Use Cases",
+    "hero.stats.skills": "Skills",
 
     // QuickStart
     "quickstart.title": "Get started in 3 steps",
+    "quickstart.badge": "Quick Start",
     "quickstart.subtitle": "From zero to running — just follow along",
     "quickstart.step1.title": "Deploy OpenClaw",
     "quickstart.step1.desc": "Choose local or cloud, follow the install page. Done in minutes.",

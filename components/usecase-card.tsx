@@ -45,7 +45,7 @@ export function UseCaseCard({ useCase }: UseCaseCardProps) {
 
           {/* Tags */}
           <div className="mb-4 flex flex-wrap gap-2">
-            {useCase.tags.slice(0, 3).map((tag) => (
+            {(locale === "en" && useCase.tagsEn ? useCase.tagsEn : useCase.tags).slice(0, 3).map((tag) => (
               <Badge key={tag} variant="secondary" className="text-xs">
                 {tag}
               </Badge>

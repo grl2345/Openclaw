@@ -54,7 +54,7 @@ export function Hero() {
         </p>
 
         {/* CTA */}
-        <div className="mb-12 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
+        <div className="mb-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
           <Button size="lg" className="group gap-2 px-8 bg-primary text-primary-foreground hover:bg-primary/90" asChild>
             <a href="#quickstart" className="inline-flex items-center gap-2">
               {t("hero.cta.guide")}
@@ -73,6 +73,20 @@ export function Hero() {
             <Github className="h-4 w-4 shrink-0 transition-transform duration-200 ease-out hover:scale-110" />
             {t("hero.cta.github")}
           </Link>
+        </div>
+
+        {/* Stats */}
+        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+          {[
+            { value: "60+", labelKey: "hero.stats.usecases" },
+            { value: "45+", labelKey: "hero.stats.skills" },
+            { value: "7", labelKey: "hero.stats.categories" },
+          ].map(({ value, labelKey }) => (
+            <div key={labelKey} className="flex flex-col items-center gap-0.5">
+              <span className="text-2xl font-bold text-foreground sm:text-3xl">{value}</span>
+              <span className="text-xs text-muted-foreground">{t(labelKey)}</span>
+            </div>
+          ))}
         </div>
       </div>
 

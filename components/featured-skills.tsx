@@ -32,16 +32,14 @@ export function FeaturedSkills() {
             </h2>
             <p className="text-lg text-muted-foreground">{t("skills.subtitle")}</p>
           </div>
-          <Button variant="outline" className="gap-2 shrink-0" asChild>
-            <Link
-              href={SKILLS_SOURCE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t("skills.viewall")}
-              <ExternalLink className="h-4 w-4" />
-            </Link>
-          </Button>
+          <div className="flex items-center gap-2 shrink-0">
+            <Button variant="outline" className="gap-2" asChild>
+              <Link href="/skills">
+                {t("skills.viewall")}
+                <ExternalLink className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
 
         {/* Skills Grid */}
