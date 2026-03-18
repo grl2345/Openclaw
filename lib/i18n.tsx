@@ -35,8 +35,8 @@ const translations = {
     "nav.group.browse": "浏览",
     "lang.switch": "EN",
 
-    "news.title": "精选资讯",
-    "news.subtitle": "来自社区与全网别人分享的 OpenClaw 相关内容，教程、心得、动态不定期更新。",
+    "news.title": "官方手册",
+    "news.subtitle": "OpenClaw 官方文档与使用手册，从入门到精通，涵盖安装配置、技能开发、最佳实践。",
     "news.officialTitle": "官方指导",
     "news.communityTitle": "社区分享",
     "news.searchPlaceholder": "搜索标题或介绍…",

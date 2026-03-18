@@ -7,14 +7,14 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Zap } from "lucide-react"
 import Link from "next/link"
 
-// 精选 6 个热门技能 ID（均为 ClawHub 真实技能，按代表性选取）
+// 精选 6 个热门技能 ID（均为 allSkills 中真实存在的 ID）
 const hotSkillIds = [
-  "apollo",           // 营销·销售 - Apollo.io CRM 集成
-  "airbnb",           // 搜索·调研 - Airbnb 搜索
-  "bluesky",          // 营销·销售 - Bluesky 社交平台 CLI
-  "asana",            // 效率·办公 - Asana 项目管理
-  "homebrew",         // Apple 工具 - macOS Homebrew 包管理
-  "bird",             // 营销·销售 - X/Twitter CLI
+  "google-calendar",          // 日历 - Google 日历
+  "1password",                // 安全 - 1Password 密码管理
+  "academic-research",        // 搜索·调研 - 学术研究
+  "12306",                    // 国内生态 - 12306 火车票
+  "a-share-real-time-data",   // 金融 - A股实时数据
+  "2nd-brain",                // 笔记 - 第二大脑
 ]
 
 export function FeaturedSkills() {

@@ -174,11 +174,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "agent-commons",
     "name": {
-      "zh": "agent-commons",
+      "zh": "智能体公共库",
       "en": "agent-commons"
     },
     "description": {
-      "zh": "Consult, commit, extend, and challenge reasoning chains.",
+      "zh": "查阅、提交、扩展和质疑推理链的公共智能体工具。",
       "en": "Consult, commit, extend, and challenge reasoning chains."
     },
     "category": "git",
@@ -195,11 +195,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "agent-team-orchestration",
     "name": {
-      "zh": "agent-team-orchestration",
+      "zh": "多智能体协作编排",
       "en": "agent-team-orchestration"
     },
     "description": {
-      "zh": "Orchestrate multi-agent teams with defined roles, task lifecycles, handoff protocols, and review workflows.",
+      "zh": "编排多智能体团队，定义角色、任务生命周期和交接协议。",
       "en": "Orchestrate multi-agent teams with defined roles, task lifecycles, handoff protocols, and review workflows."
     },
     "category": "git",
@@ -216,11 +216,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "agentdo",
     "name": {
-      "zh": "agentdo",
+      "zh": "智能体任务队列",
       "en": "agentdo"
     },
     "description": {
-      "zh": "Post tasks for other AI agents to do, or pick up work from the AgentDo task queue (agentdo.dev)",
+      "zh": "发布任务给其他 AI 智能体，或从任务队列领取工作。",
       "en": "Post tasks for other AI agents to do, or pick up work from the AgentDo task queue (agentdo.dev)"
     },
     "category": "git",
@@ -237,11 +237,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "agentgate",
     "name": {
-      "zh": "agentgate",
+      "zh": "智能体网关",
       "en": "agentgate"
     },
     "description": {
-      "zh": "API gateway for personal data with human-in-the-loop write approval.",
+      "zh": "智能体访问控制和流量管理网关。",
       "en": "API gateway for personal data with human-in-the-loop write approval."
     },
     "category": "git",
@@ -258,11 +258,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "airadar",
     "name": {
-      "zh": "airadar",
+      "zh": "AI 雷达监控",
       "en": "airadar"
     },
     "description": {
-      "zh": "Distill the signal around AI-native tools/apps and their GitHub home bases: fast-growing, hyped, well-funded.",
+      "zh": "AI 项目和趋势实时监控与预警。",
       "en": "Distill the signal around AI-native tools/apps and their GitHub home bases: fast-growing, hyped, well-funded."
     },
     "category": "git",
@@ -699,11 +699,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "2nd-brain",
     "name": {
-      "zh": "2nd-brain",
+      "zh": "第二大脑笔记",
       "en": "2nd-brain"
     },
     "description": {
-      "zh": "Personal knowledge base for capturing and retrieving information about people, places, restaurants, games, tech.",
+      "zh": "构建个人知识库，智能管理和检索笔记与想法。",
       "en": "Personal knowledge base for capturing and retrieving information about people, places, restaurants, games, tech."
     },
     "category": "productivity",
@@ -846,11 +846,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "academic-research",
     "name": {
-      "zh": "academic-research",
+      "zh": "学术研究助手",
       "en": "academic-research"
     },
     "description": {
-      "zh": "Search academic papers and conduct literature reviews using OpenAlex API (free, no key needed)",
+      "zh": "辅助学术论文搜索、文献综述和研究分析。",
       "en": "Search academic papers and conduct literature reviews using OpenAlex API (free, no key needed)"
     },
     "category": "productivity",
@@ -867,11 +867,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "academic-research-hub",
     "name": {
-      "zh": "academic-research-hub",
+      "zh": "学术研究中心",
       "en": "academic-research-hub"
     },
     "description": {
-      "zh": "Use this skill when users need to search academic papers, download research documents, extract citations, or gather.",
+      "zh": "一站式学术研究平台，整合多个学术数据库和引用管理。",
       "en": "Use this skill when users need to search academic papers, download research documents, extract citations, or gather."
     },
     "category": "productivity",
@@ -1245,11 +1245,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "a-share-real-time-data",
     "name": {
-      "zh": "a-share-real-time-data",
+      "zh": "A股实时行情",
       "en": "a-share-real-time-data"
     },
     "description": {
-      "zh": "Fetch China A-share stock market data (bars, realtime quotes, tick-by-tick transactions) via mootdx/TDX protocol.",
+      "zh": "获取 A 股实时行情数据、K线图和技术指标。",
       "en": "Fetch China A-share stock market data (bars, realtime quotes, tick-by-tick transactions) via mootdx/TDX protocol."
     },
     "category": "browser",
@@ -1287,11 +1287,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "accessibility-toolkit",
     "name": {
-      "zh": "accessibility-toolkit",
+      "zh": "无障碍工具包",
       "en": "accessibility-toolkit"
     },
     "description": {
-      "zh": "Friction-reduction patterns for agents helping.",
+      "zh": "网页和应用无障碍检测与优化工具。",
       "en": "Friction-reduction patterns for agents helping."
     },
     "category": "browser",
@@ -2358,11 +2358,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "12306",
     "name": {
-      "zh": "12306",
+      "zh": "12306 火车票助手",
       "en": "12306"
     },
     "description": {
-      "zh": "Query China Railway 12306 for train schedules, remaining tickets, and station info.",
+      "zh": "查询火车票余票、时刻表，辅助抢票和出行规划。",
       "en": "Query China Railway 12306 for train schedules, remaining tickets, and station info."
     },
     "category": "devops",
@@ -4163,11 +4163,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "academic-writer",
     "name": {
-      "zh": "academic-writer",
+      "zh": "学术写作助手",
       "en": "academic-writer"
     },
     "description": {
-      "zh": "Professional LaTeX writing assistant.",
+      "zh": "辅助学术论文写作，支持格式化、引用和语法优化。",
       "en": "Professional LaTeX writing assistant."
     },
     "category": "research",
@@ -4184,11 +4184,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "academic-writing",
     "name": {
-      "zh": "academic-writing",
+      "zh": "学术论文写作",
       "en": "academic-writing"
     },
     "description": {
-      "zh": "You are an academic writing expert specializing in scholarly papers, literature reviews, research methodology.",
+      "zh": "学术写作全流程支持，从大纲到终稿。",
       "en": "You are an academic writing expert specializing in scholarly papers, literature reviews, research methodology."
     },
     "category": "research",
@@ -4205,11 +4205,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "academic-writing-refiner",
     "name": {
-      "zh": "academic-writing-refiner",
+      "zh": "学术写作优化",
       "en": "academic-writing-refiner"
     },
     "description": {
-      "zh": "Refine academic writing for computer science research papers targeting top-tier venues (NeurIPS, ICLR, ICML, AAAI.",
+      "zh": "优化学术文章的表达、逻辑和格式。",
       "en": "Refine academic writing for computer science research papers targeting top-tier venues (NeurIPS, ICLR, ICML, AAAI."
     },
     "category": "research",
@@ -4793,11 +4793,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "adhd-assistant",
     "name": {
-      "zh": "adhd-assistant",
+      "zh": "ADHD 专注助手",
       "en": "adhd-assistant"
     },
     "description": {
-      "zh": "ADHD-friendly life management assistant for OpenClaw.",
+      "zh": "帮助 ADHD 用户保持专注、管理任务和时间。",
       "en": "ADHD-friendly life management assistant for OpenClaw."
     },
     "category": "cli",
@@ -5318,11 +5318,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "a-share-short-decision",
     "name": {
-      "zh": "a-share-short-decision",
+      "zh": "A股短线决策",
       "en": "a-share-short-decision"
     },
     "description": {
-      "zh": "A-share short-term trading decision skill for 1-5 day horizon.",
+      "zh": "基于技术分析的 A 股短线交易决策辅助工具。",
       "en": "A-share short-term trading decision skill for 1-5 day horizon."
     },
     "category": "cli",
@@ -5339,11 +5339,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "activity-analyzer",
     "name": {
-      "zh": "activity-analyzer",
+      "zh": "活动分析器",
       "en": "activity-analyzer"
     },
     "description": {
-      "zh": "Use ActivityWatch to analyze user's computer activity (Requires Node.js)",
+      "zh": "分析用户活动数据，生成洞察报告。",
       "en": "Use ActivityWatch to analyze user's computer activity (Requires Node.js)"
     },
     "category": "cli",
@@ -5906,11 +5906,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "ad-ready",
     "name": {
-      "zh": "ad-ready",
+      "zh": "广告创意生成",
       "en": "ad-ready"
     },
     "description": {
-      "zh": "Generate professional advertising images from product URLs.",
+      "zh": "快速生成广告文案和创意素材。",
       "en": "Generate professional advertising images from product URLs."
     },
     "category": "marketing",
@@ -6473,11 +6473,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "actual-budget",
     "name": {
-      "zh": "actual-budget",
+      "zh": "实际预算管理",
       "en": "actual-budget"
     },
     "description": {
-      "zh": "Query and manage personal finances via the official Actual.",
+      "zh": "个人和家庭预算管理，支持账单追踪和支出分析。",
       "en": "Query and manage personal finances via the official Actual."
     },
     "category": "productivity",
@@ -6494,11 +6494,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "adaptive-reasoning",
     "name": {
-      "zh": "adaptive-reasoning",
+      "zh": "自适应推理",
       "en": "adaptive-reasoning"
     },
     "description": {
-      "zh": "Automatically assess task complexity and adjust reasoning level.",
+      "zh": "根据上下文动态调整推理策略的智能引擎。",
       "en": "Automatically assess task complexity and adjust reasoning level."
     },
     "category": "productivity",
@@ -7840,11 +7840,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "google-analytics-api",
     "name": {
-      "zh": "google-analytics-api",
+      "zh": "谷歌分析 API",
       "en": "google-analytics-api"
     },
     "description": {
-      "zh": "Google Analytics API integration with managed.",
+      "zh": "Google Analytics API 集成，获取网站流量和用户行为数据。",
       "en": "Google Analytics API integration with managed."
     },
     "category": "analytics",
@@ -9103,11 +9103,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "better-notion",
     "name": {
-      "zh": "better-notion",
+      "zh": "Notion 增强版",
       "en": "better-notion"
     },
     "description": {
-      "zh": "Full CRUD for Notion pages, databases.",
+      "zh": "增强版 Notion 集成，支持高级查询和自动化操作。",
       "en": "Full CRUD for Notion pages, databases."
     },
     "category": "notes",
@@ -10591,11 +10591,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "adaptive-learning-agents",
     "name": {
-      "zh": "adaptive-learning-agents",
+      "zh": "自适应学习代理",
       "en": "adaptive-learning-agents"
     },
     "description": {
-      "zh": "Learn from errors and corrections in real-time.",
+      "zh": "根据用户行为自动调整学习策略的智能代理。",
       "en": "Learn from errors and corrections in real-time."
     },
     "category": "health",
@@ -13203,11 +13203,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "google-home",
     "name": {
-      "zh": "google-home",
+      "zh": "谷歌智能家居",
       "en": "google-home"
     },
     "description": {
-      "zh": "Control Google Nest devices.",
+      "zh": "控制 Google Nest 智能设备，管理智能家居场景。",
       "en": "Control Google Nest devices."
     },
     "category": "iot",
@@ -14303,11 +14303,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "google-calendar",
     "name": {
-      "zh": "google-calendar",
+      "zh": "谷歌日历",
       "en": "google-calendar"
     },
     "description": {
-      "zh": "Interact with Google Calendar via the Google Calendar.",
+      "zh": "管理 Google 日历事件、日程安排和提醒，支持创建、查询和更新日程。",
       "en": "Interact with Google Calendar via the Google Calendar."
     },
     "category": "calendar",
@@ -15552,11 +15552,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "1password",
     "name": {
-      "zh": "1password",
+      "zh": "1Password 密码管理",
       "en": "1password"
     },
     "description": {
-      "zh": "Set up and use 1Password CLI (op).",
+      "zh": "安全管理密码、密钥和敏感信息，支持自动填充和团队共享。",
       "en": "Set up and use 1Password CLI (op)."
     },
     "category": "security",
@@ -16557,11 +16557,11 @@ export const allSkills: AllSkill[] = [
   {
     "id": "moltbot-docker",
     "name": {
-      "zh": "moltbot-docker",
+      "zh": "Docker 容器管理",
       "en": "moltbot-docker"
     },
     "description": {
-      "zh": "Enables the bot to manage Docker containers, images, and stacks.",
+      "zh": "管理 Docker 容器的启动、停止、日志和监控。",
       "en": "Enables the bot to manage Docker containers, images, and stacks."
     },
     "category": "social",
