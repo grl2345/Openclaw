@@ -9,7 +9,8 @@ const linkClass = "text-sm text-muted-foreground transition-colors hover:text-pr
 const linkClassRed = "text-sm text-primary transition-colors hover:opacity-90"
 
 export function Footer() {
-  const { t } = useI18n()
+  const { t, locale } = useI18n()
+  const isZh = locale === "zh"
 
   return (
     <footer className="border-t border-border/60 bg-muted/30">
@@ -32,7 +33,7 @@ export function Footer() {
               <li><Link href="/#categories" className={linkClass}>{t("nav.categories")}</Link></li>
               <li><Link href="/api-recommend" className={linkClass}>{t("nav.apiRecommend")}</Link></li>
               <li><Link href="/install" className={linkClass}>{t("nav.install")}</Link></li>
-              <li><Link href="/news" className={linkClass}>{t("nav.news")}</Link></li>
+              <li><Link href="/news" className={linkClass}>{isZh ? "官方手册" : "Manual"}</Link></li>
               <li><Link href="/about#support" className={linkClass}>{t("footer.support")}</Link></li>
             </ul>
           </div>

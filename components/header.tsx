@@ -47,10 +47,10 @@ export function Header() {
           </div>
           <span className="h-4 w-px bg-border/60" aria-hidden />
           <div className="flex items-center gap-1 text-sm text-muted-foreground">
-            <Link href="/#usecases" className="rounded-md px-3 py-2 transition-colors hover:text-foreground">
+            <Link href="/usecases" className="rounded-md px-3 py-2 transition-colors hover:text-foreground">
               {t("nav.usecases")}
             </Link>
-            <Link href="/#skills" className="rounded-md px-3 py-2 transition-colors hover:text-foreground">
+            <Link href="/skills" className="rounded-md px-3 py-2 transition-colors hover:text-foreground">
               {t("nav.skills")}
             </Link>
           </div>
@@ -121,8 +121,8 @@ export function Header() {
               <p className="mb-1 px-3 text-[10px] uppercase tracking-wider text-muted-foreground/70">
                 {t("nav.group.browse")}
               </p>
-              <Link href="/#usecases" className="rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>{t("nav.usecases")}</Link>
-              <Link href="/#skills" className="rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>{t("nav.skills")}</Link>
+              <Link href="/usecases" className="rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>{t("nav.usecases")}</Link>
+              <Link href="/skills" className="rounded-lg px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>{t("nav.skills")}</Link>
             </div>
             <div className="mt-2">
               <p className="mb-1 px-3 text-[10px] uppercase tracking-wider text-muted-foreground/70">

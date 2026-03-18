@@ -7,7 +7,9 @@ import { Footer } from "@/components/footer"
 import { Badge } from "@/components/ui/badge"
 import { useI18n } from "@/lib/i18n"
 import { allSkills, allSkillCategories, type AllSkillCategoryId } from "@/lib/all-skills"
-import { Search, X, ExternalLink, Zap } from "lucide-react"
+import { Search, X, ExternalLink, Zap, ChevronLeft, ChevronRight } from "lucide-react"
+
+const PAGE_SIZE = 60
 
 export default function SkillsPage() {
   const { locale } = useI18n()
@@ -15,6 +17,7 @@ export default function SkillsPage() {
 
   const [searchQuery, setSearchQuery] = useState("")
   const [activeCategory, setActiveCategory] = useState<AllSkillCategoryId | "all">("all")
+  const [page, setPage] = useState(1)
 
   const filtered = useMemo(() => {
     let list = allSkills
@@ -35,7 +38,24 @@ export default function SkillsPage() {
     return list
   }, [searchQuery, activeCategory])
 
-  const clearSearch = useCallback(() => setSearchQuery(""), [])
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE)
+  const currentPage = Math.min(page, totalPages || 1)
+  const paged = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE)
+
+  const clearSearch = useCallback(() => {
+    setSearchQuery("")
+    setPage(1)
+  }, [])
+
+  const handleCategoryChange = useCallback((cat: AllSkillCategoryId | "all") => {
+    setActiveCategory(cat)
+    setPage(1)
+  }, [])
+
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value)
+    setPage(1)
+  }, [])
 
   const pricingColor: Record<string, string> = {
     free: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
@@ -55,6 +75,23 @@ export default function SkillsPage() {
     }
     return map
   }, [])
+
+  // 分页按钮列表
+  const pageButtons = useMemo(() => {
+    const pages: (number | "...")[] = []
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i)
+    } else {
+      pages.push(1)
+      if (currentPage > 3) pages.push("...")
+      for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+        pages.push(i)
+      }
+      if (currentPage < totalPages - 2) pages.push("...")
+      pages.push(totalPages)
+    }
+    return pages
+  }, [currentPage, totalPages])
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -91,7 +128,7 @@ export default function SkillsPage() {
           <input
             type="text"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={handleSearchChange}
             placeholder={isZh ? "搜索技能名称、描述、标签…" : "Search skills by name, description, tags…"}
             className="w-full rounded-xl border border-border/60 bg-card/60 py-3 pl-11 pr-11 text-sm text-foreground placeholder:text-muted-foreground backdrop-blur-sm outline-none ring-0 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all"
           />
@@ -108,7 +145,7 @@ export default function SkillsPage() {
         {/* Category tabs */}
         <div className="mb-8 flex flex-wrap gap-2 justify-center">
           <button
-            onClick={() => setActiveCategory("all")}
+            onClick={() => handleCategoryChange("all")}
             className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-medium transition-all ${
               activeCategory === "all"
                 ? "border-primary bg-primary text-primary-foreground shadow-sm"
@@ -121,7 +158,7 @@ export default function SkillsPage() {
           {allSkillCategories.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
+              onClick={() => handleCategoryChange(cat.id)}
               className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-medium transition-all ${
                 activeCategory === cat.id
                   ? "border-primary bg-primary text-primary-foreground shadow-sm"
@@ -142,8 +179,8 @@ export default function SkillsPage() {
         <div className="mb-5 flex items-center justify-between">
           <p className="text-sm text-muted-foreground">
             {isZh
-              ? `显示 ${filtered.length.toLocaleString()} / ${allSkills.length.toLocaleString()} 个技能`
-              : `Showing ${filtered.length.toLocaleString()} of ${allSkills.length.toLocaleString()} skills`}
+              ? `显示 ${((currentPage - 1) * PAGE_SIZE + 1).toLocaleString()}-${Math.min(currentPage * PAGE_SIZE, filtered.length).toLocaleString()} / ${filtered.length.toLocaleString()} 个技能`
+              : `Showing ${((currentPage - 1) * PAGE_SIZE + 1).toLocaleString()}-${Math.min(currentPage * PAGE_SIZE, filtered.length).toLocaleString()} of ${filtered.length.toLocaleString()} skills`}
             {searchQuery && (
               <span className="ml-2 text-primary">
                 {isZh ? `· 搜索「${searchQuery}」` : `· searching "${searchQuery}"`}
@@ -172,77 +209,116 @@ export default function SkillsPage() {
             </button>
           </div>
         ) : (
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filtered.map((skill) => {
-              const catMeta = allSkillCategories.find((c) => c.id === skill.category)
-              return (
-                <a
-                  key={skill.id}
-                  href={skill.externalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative overflow-hidden rounded-xl border border-border/50 bg-card/40 p-4 backdrop-blur-sm transition-all hover:border-primary/50 hover:bg-card hover:shadow-md"
-                >
-                  <div className="absolute inset-0 bg-primary/3 opacity-0 transition-opacity group-hover:opacity-100" />
-                  <div className="relative">
-                    {/* Meta row */}
-                    <div className="mb-2 flex flex-wrap items-center gap-1.5">
-                      {catMeta && (
-                        <span className="text-xs font-medium text-muted-foreground">
-                          {isZh ? catMeta.nameZh : catMeta.nameEn}
-                        </span>
-                      )}
-                      {skill.required && (
-                        <Badge variant="default" className="h-4 px-1.5 text-[10px]">
-                          {isZh ? "必装" : "Required"}
-                        </Badge>
-                      )}
-                      {skill.pricing && (
-                        <span
-                          className={`inline-flex items-center rounded-full border px-1.5 py-0.5 text-[10px] font-medium ${pricingColor[skill.pricing]}`}
-                        >
-                          {pricingLabel[skill.pricing]}
-                        </span>
-                      )}
-                    </div>
+          <>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {paged.map((skill) => {
+                const catMeta = allSkillCategories.find((c) => c.id === skill.category)
+                return (
+                  <a
+                    key={skill.id}
+                    href={skill.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative overflow-hidden rounded-xl border border-border/50 bg-card/40 p-4 backdrop-blur-sm transition-all hover:border-primary/50 hover:bg-card hover:shadow-md"
+                  >
+                    <div className="absolute inset-0 bg-primary/3 opacity-0 transition-opacity group-hover:opacity-100" />
+                    <div className="relative">
+                      {/* Meta row */}
+                      <div className="mb-2 flex flex-wrap items-center gap-1.5">
+                        {catMeta && (
+                          <span className="text-xs font-medium text-muted-foreground">
+                            {isZh ? catMeta.nameZh : catMeta.nameEn}
+                          </span>
+                        )}
+                        {skill.required && (
+                          <Badge variant="default" className="h-4 px-1.5 text-[10px]">
+                            {isZh ? "必装" : "Required"}
+                          </Badge>
+                        )}
+                        {skill.pricing && (
+                          <span
+                            className={`inline-flex items-center rounded-full border px-1.5 py-0.5 text-[10px] font-medium ${pricingColor[skill.pricing]}`}
+                          >
+                            {pricingLabel[skill.pricing]}
+                          </span>
+                        )}
+                      </div>
 
-                    {/* Name */}
-                    <h3 className="mb-1.5 text-sm font-semibold text-foreground leading-snug group-hover:text-primary transition-colors">
-                      {isZh ? skill.name.zh : skill.name.en}
-                    </h3>
+                      {/* Name */}
+                      <h3 className="mb-1.5 text-sm font-semibold text-foreground leading-snug group-hover:text-primary transition-colors">
+                        {isZh ? skill.name.zh : skill.name.en}
+                      </h3>
 
-                    {/* Description */}
-                    <p className="mb-3 line-clamp-2 text-xs text-muted-foreground leading-relaxed">
-                      {isZh ? skill.description.zh : skill.description.en}
-                    </p>
+                      {/* Description */}
+                      <p className="mb-3 line-clamp-2 text-xs text-muted-foreground leading-relaxed">
+                        {isZh ? skill.description.zh : skill.description.en}
+                      </p>
 
-                    {/* Operations */}
-                    {skill.operations?.length > 0 && (
-                      <div className="mb-2.5 rounded-md border border-border/50 bg-muted/30 px-2 py-1.5 font-mono text-[11px] text-foreground/80">
-                        {skill.operations.slice(0, 2).map((op, i) => (
-                          <div key={i} className="truncate leading-relaxed" title={op}>
-                            {op}
-                          </div>
+                      {/* Operations */}
+                      {skill.operations?.length > 0 && (
+                        <div className="mb-2.5 rounded-md border border-border/50 bg-muted/30 px-2 py-1.5 font-mono text-[11px] text-foreground/80">
+                          {skill.operations.slice(0, 2).map((op, i) => (
+                            <div key={i} className="truncate leading-relaxed" title={op}>
+                              {op}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-1">
+                        {skill.tags.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="inline-flex rounded-md bg-muted/60 px-1.5 py-0.5 text-[10px] text-muted-foreground"
+                          >
+                            {tag}
+                          </span>
                         ))}
                       </div>
-                    )}
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-1">
-                      {skill.tags.slice(0, 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="inline-flex rounded-md bg-muted/60 px-1.5 py-0.5 text-[10px] text-muted-foreground"
-                        >
-                          {tag}
-                        </span>
-                      ))}
                     </div>
-                  </div>
-                </a>
-              )
-            })}
-          </div>
+                  </a>
+                )
+              })}
+            </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="mt-10 flex items-center justify-center gap-1.5">
+                <button
+                  onClick={() => { setPage(Math.max(1, currentPage - 1)); window.scrollTo(0, 0) }}
+                  disabled={currentPage === 1}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border/60 bg-card/50 text-muted-foreground transition-all hover:border-primary/40 hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                {pageButtons.map((p, i) =>
+                  p === "..." ? (
+                    <span key={`dot-${i}`} className="px-1 text-muted-foreground">...</span>
+                  ) : (
+                    <button
+                      key={p}
+                      onClick={() => { setPage(p as number); window.scrollTo(0, 0) }}
+                      className={`inline-flex h-9 min-w-[36px] items-center justify-center rounded-lg border px-2 text-sm font-medium transition-all ${
+                        currentPage === p
+                          ? "border-primary bg-primary text-primary-foreground shadow-sm"
+                          : "border-border/60 bg-card/50 text-muted-foreground hover:border-primary/40 hover:text-foreground"
+                      }`}
+                    >
+                      {p}
+                    </button>
+                  )
+                )}
+                <button
+                  onClick={() => { setPage(Math.min(totalPages, currentPage + 1)); window.scrollTo(0, 0) }}
+                  disabled={currentPage === totalPages}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border/60 bg-card/50 text-muted-foreground transition-all hover:border-primary/40 hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+            )}
+          </>
         )}
 
       </div>

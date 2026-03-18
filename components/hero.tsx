@@ -78,9 +78,9 @@ export function Hero() {
         {/* Stats */}
         <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
           {[
-            { value: "60+", labelKey: "hero.stats.usecases" },
-            { value: "45+", labelKey: "hero.stats.skills" },
-            { value: "7", labelKey: "hero.stats.categories" },
+            { value: "824+", labelKey: "hero.stats.skills" },
+            { value: "67+", labelKey: "hero.stats.usecases" },
+            { value: "25", labelKey: "hero.stats.categories" },
           ].map(({ value, labelKey }) => (
             <div key={labelKey} className="flex flex-col items-center gap-0.5">
               <span className="text-2xl font-bold text-foreground sm:text-3xl">{value}</span>

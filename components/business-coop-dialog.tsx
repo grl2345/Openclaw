@@ -24,15 +24,15 @@ export function BusinessCoopDialog({ floating = true, onOpenChange }: BusinessCo
       type="button"
       className={
         floating
-          ? "group fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full bg-primary/80 px-3 py-2.5 text-xs font-semibold text-primary-foreground shadow-md backdrop-blur-sm transition-all duration-200 hover:bg-primary hover:shadow-lg hover:px-4"
+          ? "group fixed bottom-5 right-5 z-40 flex w-24 items-center gap-2 rounded-full bg-primary/80 py-2.5 pl-3 pr-3 text-xs font-semibold text-primary-foreground shadow-md backdrop-blur-sm transition-[background-color,box-shadow] duration-200 hover:bg-primary hover:shadow-lg"
           : "inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:bg-primary/90"
       }
       aria-label={t("nav.businessCoop")}
     >
       <Handshake className="h-3.5 w-3.5 shrink-0" />
-      <span className={floating ? "max-w-0 overflow-hidden opacity-0 transition-all duration-200 group-hover:max-w-24 group-hover:opacity-100" : ""}>{t("nav.businessCoop")}</span>
+      <span className={floating ? "max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-[max-width,opacity] duration-200 group-hover:max-w-24 group-hover:opacity-100" : ""}>{t("nav.businessCoop")}</span>
       {floating && (
-        <span className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-emerald-400 ring-2 ring-background" aria-hidden />
+        <span className="absolute -right-0.5 -top-0.5 h-2 w-2 shrink-0 rounded-full bg-emerald-400 ring-2 ring-background" aria-hidden />
       )}
     </button>
   )
