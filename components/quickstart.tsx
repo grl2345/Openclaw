@@ -81,7 +81,7 @@ export function QuickStart() {
           {steps.map(({ step, icon: Icon, titleKey, descKey, href, ctaKey }) => (
             <div
               key={step}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-card/80 p-7 shadow-sm backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 sm:p-6 lg:p-8"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-card/80 p-5 shadow-sm backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 sm:p-6 lg:p-8"
             >
               {/* 步骤角标 */}
               <div className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-border/40 bg-muted/30 text-sm font-semibold tabular-nums text-muted-foreground transition-colors duration-300 group-hover:border-primary/30 group-hover:bg-primary/5 group-hover:text-primary">

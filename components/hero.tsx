@@ -39,8 +39,8 @@ export function Hero() {
         </div>
 
         {/* Logo */}
-        <div className="logo-float mb-6">
-          <LobsterIcon size={180} className="h-[140px] w-[140px] sm:h-[180px] sm:w-[180px]" />
+        <div className="logo-float mb-5 sm:mb-6">
+          <LobsterIcon size={180} className="h-[120px] w-[120px] sm:h-[160px] sm:w-[160px] lg:h-[180px] lg:w-[180px]" />
         </div>
 
         {/* 大标题 */}

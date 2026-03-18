@@ -229,10 +229,10 @@ export default function InstallPage() {
                         {isZh ? "打开飞书秒搭，点「创建」OpenClaw 智能助手" : "Open Feishu Miaoda, click Create"}
                       </span>
                     </div>
-                    <p className="mb-4 pl-11 text-sm text-muted-foreground">
+                  <p className="mb-4 pl-6 text-sm text-muted-foreground sm:pl-11">
                       {isZh ? "打开官网，找到「OpenClaw 智能助手」，点右侧蓝色「创建」按钮。" : "Open the link, find OpenClaw Smart Assistant, click Create."}
                     </p>
-                    <figure className="ml-11 max-w-[min(100%,560px)] overflow-hidden rounded-lg border border-border/50">
+                  <figure className="ml-0 max-w-[min(100%,560px)] overflow-hidden rounded-lg border border-border/50 sm:ml-11">
                       <Image src="/install/feishu-miaoda-1.png" alt="飞书秒搭创建" width={IMG_STEP.w} height={IMG_STEP.h} className="w-full object-contain" priority sizes="(max-width: 560px) 100vw, 560px" />
                     </figure>
                   </div>
@@ -245,10 +245,10 @@ export default function InstallPage() {
                         {isZh ? "等约 1 分钟，自动部署完成" : "Wait ~1 min for auto deployment"}
                       </span>
                     </div>
-                    <p className="mb-4 pl-11 text-sm text-muted-foreground">
+                  <p className="mb-4 pl-6 text-sm text-muted-foreground sm:pl-11">
                       {isZh ? "页面会显示启动进度，全程自动，无需操作。看到「已连接」就成功了。" : "Progress auto-runs. When you see 'Connected', you're done."}
                     </p>
-                    <div className="ml-11 space-y-3">
+                  <div className="ml-0 space-y-3 sm:ml-11">
                       <figure className="max-w-[min(100%,560px)] overflow-hidden rounded-lg border border-border/50">
                         <Image src="/install/feishu-miaoda-2.png" alt="部署进度" width={IMG_STEP.w} height={IMG_STEP.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
                       </figure>

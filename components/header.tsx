@@ -32,7 +32,7 @@ export function Header() {
           <div className="flex h-11 w-11 items-center justify-center">
             <LobsterIcon size={36} className="text-primary" />
           </div>
-          <span className="text-lg font-bold text-foreground">{t("brand.name")}</span>
+          <span className="text-base font-bold text-foreground sm:text-lg">{t("brand.name")}</span>
         </Link>
 
         {/* Desktop Navigation：上手 → 浏览 → 更多 */}
@@ -69,7 +69,7 @@ export function Header() {
         </nav>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <Button
             variant="ghost"
             size="icon"

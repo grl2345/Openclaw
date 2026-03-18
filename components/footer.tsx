@@ -14,8 +14,8 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border/60 bg-muted/30">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+        <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-8">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="mb-4 inline-flex items-center gap-2.5">
@@ -28,7 +28,7 @@ export function Footer() {
           {/* Quick Links - 左右 2 列 */}
           <div>
             <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-muted-foreground">{t("footer.links")}</h3>
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+            <ul className="grid grid-cols-1 gap-y-2.5 sm:grid-cols-2 sm:gap-x-6">
               <li><Link href="/#usecases" className={linkClass}>{t("nav.usecases")}</Link></li>
               <li><Link href="/#categories" className={linkClass}>{t("nav.categories")}</Link></li>
               <li><Link href="/api-recommend" className={linkClass}>{t("nav.apiRecommend")}</Link></li>
