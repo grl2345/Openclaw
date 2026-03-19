@@ -33,6 +33,7 @@ const translations = {
     "nav.github": "GitHub",
     "nav.group.start": "上手",
     "nav.group.browse": "浏览",
+    "nav.quickstart.cta": "快速开始",
     "lang.switch": "EN",
 
     "news.title": "官方手册",
@@ -231,6 +232,7 @@ const translations = {
     "nav.github": "GitHub",
     "nav.group.start": "Get started",
     "nav.group.browse": "Browse",
+    "nav.quickstart.cta": "Quick Start",
     "lang.switch": "中文",
 
     "news.title": "Curated news",

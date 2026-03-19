@@ -175,7 +175,17 @@ export function Footer() {
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} {t("footer.copyright")}. {t("footer.rights")}
           </p>
-          <p className="text-xs text-muted-foreground">MIT License</p>
+          <div className="flex items-center gap-3 text-xs text-muted-foreground">
+            <Link href="/privacy" className="transition-colors hover:text-foreground">
+              {isZh ? "隐私政策" : "Privacy Policy"}
+            </Link>
+            <span className="text-border">|</span>
+            <Link href="/terms" className="transition-colors hover:text-foreground">
+              {isZh ? "服务条款" : "Terms of Service"}
+            </Link>
+            <span className="text-border">|</span>
+            <span>MIT License</span>
+          </div>
         </div>
       </div>
     </footer>
