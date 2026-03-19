@@ -72,13 +72,13 @@ export function Header() {
           : "border-b border-transparent bg-background/60 backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="group flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary/20">
-            <LobsterIcon size={24} className="text-primary" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary/20">
+            <LobsterIcon size={28} className="text-primary" />
           </div>
-          <span className="text-sm font-bold text-foreground sm:text-base">{t("brand.name")}</span>
+          <span className="text-base font-bold text-foreground sm:text-lg">{t("brand.name")}</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -95,23 +95,23 @@ export function Header() {
                   <Comp
                     key={item.key}
                     href={item.href}
-                    className={`relative flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[13px] font-medium transition-all ${
+                    className={`relative flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-all ${
                       active
                         ? "text-primary"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
-                    <Icon className="h-3.5 w-3.5" />
+                    <Icon className="h-4 w-4" />
                     <span>{t(item.key)}</span>
                     {active && (
-                      <span className="absolute -bottom-[13px] left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-primary" />
+                      <span className="absolute -bottom-[11px] left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-primary" />
                     )}
                   </Comp>
                 )
               })}
           </div>
 
-          <span className="mx-1.5 h-4 w-px bg-border/50" aria-hidden />
+          <span className="mx-2 h-4 w-px bg-border/50" aria-hidden />
 
           {/* Browse group */}
           <div className="flex items-center">
@@ -124,23 +124,23 @@ export function Header() {
                   <Link
                     key={item.key}
                     href={item.href}
-                    className={`relative flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[13px] font-medium transition-all ${
+                    className={`relative flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-all ${
                       active
                         ? "text-primary"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
-                    <Icon className="h-3.5 w-3.5" />
+                    <Icon className="h-4 w-4" />
                     <span>{t(item.key)}</span>
                     {active && (
-                      <span className="absolute -bottom-[13px] left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-primary" />
+                      <span className="absolute -bottom-[11px] left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-primary" />
                     )}
                   </Link>
                 )
               })}
           </div>
 
-          <span className="mx-1.5 h-4 w-px bg-border/50" aria-hidden />
+          <span className="mx-2 h-4 w-px bg-border/50" aria-hidden />
 
           {/* More group */}
           <div className="flex items-center">
@@ -153,16 +153,16 @@ export function Header() {
                   <Link
                     key={item.key}
                     href={item.href}
-                    className={`relative flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[13px] font-medium transition-all ${
+                    className={`relative flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-all ${
                       active
                         ? "text-primary"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
-                    <Icon className="h-3.5 w-3.5" />
+                    <Icon className="h-4 w-4" />
                     <span>{t(item.key)}</span>
                     {active && (
-                      <span className="absolute -bottom-[13px] left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-primary" />
+                      <span className="absolute -bottom-[11px] left-1/2 h-0.5 w-5 -translate-x-1/2 rounded-full bg-primary" />
                     )}
                   </Link>
                 )
