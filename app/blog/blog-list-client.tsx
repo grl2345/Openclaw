@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useI18n } from "@/lib/i18n"
 import { ARTICLE_CATEGORIES, getCategoryLabel, type Article, type ArticleCategory } from "@/lib/blog"
@@ -19,6 +19,13 @@ export function BlogListClient({ initialArticles, initialCount }: { initialArtic
   const [activeCategory, setActiveCategory] = useState<ArticleCategory | "all">("all")
   const [offset, setOffset] = useState(0)
   const [hasMore, setHasMore] = useState(initialArticles.length === LIMIT)
+
+  // Fallback: if SSR didn't provide data, fetch on client
+  useEffect(() => {
+    if (initialArticles.length === 0) {
+      fetchArticles("all", 0, true)
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchArticles = async (cat: ArticleCategory | "all", off: number, replace: boolean) => {
     setLoading(true)
