@@ -65,7 +65,7 @@ export default function AboutPage() {
                 </p>
                 <div className="mt-3 flex justify-center">
                   <Image
-                    src="/contact/alipay-tip.png"
+                    src="/contact/alipay-tip.webp"
                     alt={isZh ? "支付宝打赏二维码" : "Alipay tip QR code"}
                     width={180}
                     height={180}
@@ -83,7 +83,7 @@ export default function AboutPage() {
                 </p>
                 <div className="mt-3 flex justify-center">
                   <Image
-                    src="/contact/wechat-personal.png"
+                    src="/contact/wechat-personal.webp"
                     alt={isZh ? "个人微信二维码" : "WeChat personal QR code"}
                     width={180}
                     height={180}
@@ -101,7 +101,7 @@ export default function AboutPage() {
                 </p>
                 <div className="mt-3 flex justify-center">
                   <Image
-                    src="/contact/wechat-oa-xiaogao.png"
+                    src="/contact/wechat-oa-xiaogao.webp"
                     alt={isZh ? "微信公众号 小高聊AI" : "WeChat OA 小高聊AI"}
                     width={180}
                     height={180}

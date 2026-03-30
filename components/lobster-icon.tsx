@@ -13,13 +13,12 @@ interface LobsterIconProps {
 export function LobsterIcon({ className = "", size = 24 }: LobsterIconProps) {
   return (
     <Image
-      src="/logo.png"
+      src="/logo.webp"
       alt="懂得AI"
       width={size}
       height={size}
       className={`object-contain ${className}`}
       style={{ width: size, height: size }}
-      unoptimized
     />
   )
 }

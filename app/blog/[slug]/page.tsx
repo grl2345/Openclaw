@@ -1,5 +1,5 @@
-// Force dynamic rendering so content is always fresh
-export const dynamic = "force-dynamic"
+// Revalidate every 60 seconds so content stays fresh without hitting DB on every request
+export const revalidate = 60
 
 import type { Metadata } from "next"
 import Link from "next/link"

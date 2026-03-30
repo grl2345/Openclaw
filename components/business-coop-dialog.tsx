@@ -54,7 +54,7 @@ export function BusinessCoopDialog({ floating = true, onOpenChange }: BusinessCo
         </DialogTitle>
         <div className="mt-4 flex justify-center">
           <Image
-            src="/contact/wechat-personal.png"
+            src="/contact/wechat-personal.webp"
             alt="WeChat"
             width={220}
             height={220}

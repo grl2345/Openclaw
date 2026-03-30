@@ -233,7 +233,7 @@ export default function InstallPage() {
                       {isZh ? "打开官网，找到「OpenClaw 智能助手」，点右侧蓝色「创建」按钮。" : "Open the link, find OpenClaw Smart Assistant, click Create."}
                     </p>
                   <figure className="ml-0 max-w-[min(100%,560px)] overflow-hidden rounded-lg border border-border/50 sm:ml-11">
-                      <Image src="/install/feishu-miaoda-1.png" alt="飞书秒搭创建" width={IMG_STEP.w} height={IMG_STEP.h} className="w-full object-contain" priority sizes="(max-width: 560px) 100vw, 560px" />
+                      <Image src="/install/feishu-miaoda-1.webp" alt="飞书秒搭创建" width={IMG_STEP.w} height={IMG_STEP.h} className="w-full object-contain" priority sizes="(max-width: 560px) 100vw, 560px" />
                     </figure>
                   </div>
 
@@ -250,10 +250,10 @@ export default function InstallPage() {
                     </p>
                   <div className="ml-0 space-y-3 sm:ml-11">
                       <figure className="max-w-[min(100%,560px)] overflow-hidden rounded-lg border border-border/50">
-                        <Image src="/install/feishu-miaoda-2.png" alt="部署进度" width={IMG_STEP.w} height={IMG_STEP.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
+                        <Image src="/install/feishu-miaoda-2.webp" alt="部署进度" width={IMG_STEP.w} height={IMG_STEP.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
                       </figure>
                       <figure className="max-w-[min(100%,560px)] overflow-hidden rounded-lg border border-border/50">
-                        <Image src="/install/feishu-miaoda-3.png" alt="连接成功" width={IMG_STEP.w} height={IMG_STEP.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
+                        <Image src="/install/feishu-miaoda-3.webp" alt="连接成功" width={IMG_STEP.w} height={IMG_STEP.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
                       </figure>
                     </div>
                   </div>
@@ -270,7 +270,7 @@ export default function InstallPage() {
                       {isZh ? "打开飞书，在聊天里找到 OpenClaw 助手，直接发消息即可。" : "Open Feishu, find OpenClaw in chat, start messaging."}
                     </p>
                     <figure className="ml-11 max-w-[min(100%,560px)] overflow-hidden rounded-lg border border-border/50">
-                      <Image src="/install/feishu-miaoda-5.png" alt="飞书对话" width={IMG_STEP.w} height={IMG_TALL.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
+                      <Image src="/install/feishu-miaoda-5.webp" alt="飞书对话" width={IMG_STEP.w} height={IMG_TALL.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
                     </figure>
                   </div>
 
@@ -320,7 +320,7 @@ export default function InstallPage() {
                       {isZh ? "打开下载页，安装时一路点「下一步」即可。" : "Open download page, click Next through installer."}
                     </p>
                     <figure className="ml-11 max-w-[min(100%,560px)] overflow-hidden rounded-lg border border-border/50">
-                      <Image src="/install/wechat-workbuddy-1.png" alt="WorkBuddy 下载" width={IMG_STEP.w} height={IMG_STEP.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
+                      <Image src="/install/wechat-workbuddy-1.webp" alt="WorkBuddy 下载" width={IMG_STEP.w} height={IMG_STEP.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
                     </figure>
                     <a
                       href={WORKBUDDY_URL}
@@ -345,7 +345,7 @@ export default function InstallPage() {
                       {isZh ? "打开软件后点「登录」，浏览器弹出页面，用微信扫一扫即可。" : "Click Login, scan the QR code with WeChat to sign in."}
                     </p>
                     <figure className="ml-11 max-w-[min(100%,560px)] overflow-hidden rounded-lg border border-border/50">
-                      <Image src="/install/wechat-workbuddy-2.png" alt="WorkBuddy 登录" width={IMG_STEP.w} height={IMG_TALL.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
+                      <Image src="/install/wechat-workbuddy-2.webp" alt="WorkBuddy 登录" width={IMG_STEP.w} height={IMG_TALL.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
                     </figure>
                   </div>
 
@@ -364,13 +364,13 @@ export default function InstallPage() {
                     </p>
                     <div className="ml-11 space-y-3">
                       <figure className="max-w-[min(100%,560px)] overflow-hidden rounded-lg border border-border/50">
-                        <Image src="/install/wechat-workbuddy-3.png" alt="Claw 设置" width={IMG_STEP.w} height={IMG_TALL.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
+                        <Image src="/install/wechat-workbuddy-3.webp" alt="Claw 设置" width={IMG_STEP.w} height={IMG_TALL.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
                       </figure>
                       <figure className="max-w-[min(100%,560px)] overflow-hidden rounded-lg border border-border/50">
-                        <Image src="/install/wechat-workbuddy-4.png" alt="扫码绑定" width={IMG_STEP.w} height={IMG_TALL.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
+                        <Image src="/install/wechat-workbuddy-4.webp" alt="扫码绑定" width={IMG_STEP.w} height={IMG_TALL.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
                       </figure>
                       <figure className="max-w-[min(100%,560px)] overflow-hidden rounded-lg border border-border/50">
-                        <Image src="/install/wechat-workbuddy-5.png" alt="绑定成功" width={IMG_STEP.w} height={IMG_TALL.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
+                        <Image src="/install/wechat-workbuddy-5.webp" alt="绑定成功" width={IMG_STEP.w} height={IMG_TALL.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
                       </figure>
                     </div>
                   </div>
@@ -389,7 +389,7 @@ export default function InstallPage() {
                         : "All set! Keep your PC and WorkBuddy running to receive messages."}
                     </p>
                     <figure className="ml-11 max-w-[min(100%,560px)] overflow-hidden rounded-lg border border-border/50">
-                      <Image src="/install/wechat-workbuddy-6.png" alt="微信对话" width={IMG_STEP.w} height={IMG_TALL.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
+                      <Image src="/install/wechat-workbuddy-6.webp" alt="微信对话" width={IMG_STEP.w} height={IMG_TALL.h} className="w-full object-contain" sizes="(max-width: 560px) 100vw, 560px" />
                     </figure>
                   </div>
 

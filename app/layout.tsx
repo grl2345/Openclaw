@@ -1,5 +1,6 @@
 import { cookies, headers } from "next/headers"
 import { Inter, JetBrains_Mono } from "next/font/google"
+import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
 import { ClientLayout } from "@/components/client-layout"
 import type { Locale } from "@/lib/i18n"
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
       "收录 800+ 精选技能、50+ 场景案例，从部署到进阶全覆盖。帮你快速上手 OpenClaw，打造真正懂你的 AI 助理。",
     images: [
       {
-        url: "/logo.png",
+        url: "/logo.webp",
         width: 512,
         height: 512,
         alt: "OpenClaw Hub",
@@ -67,7 +68,7 @@ export const metadata: Metadata = {
     title: "OpenClaw Hub - 全网最全 OpenClaw 教程与技能导航",
     description:
       "收录 800+ 精选技能、50+ 场景案例，从部署到进阶全覆盖。",
-    images: ["/logo.png"],
+    images: ["/logo.webp"],
   },
   alternates: {
     canonical: "/",
@@ -113,9 +114,9 @@ export default async function RootLayout({
   return (
     <html lang={defaultLocale === "zh" ? "zh-CN" : "en"} suppressHydrationWarning>
       <head>
-        <script
-          async
+        <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5612094173556578"
+          strategy="lazyOnload"
           crossOrigin="anonymous"
         />
         <script

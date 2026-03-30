@@ -1,11 +1,18 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { QuickStart } from "@/components/quickstart"
-import { FeaturedUseCases } from "@/components/featured-usecases"
-import { FeaturedSkills } from "@/components/featured-skills"
 import { Footer } from "@/components/footer"
+
+const FeaturedSkills = dynamic(() => import("@/components/featured-skills").then(m => ({ default: m.FeaturedSkills })), {
+  loading: () => <div className="py-16 sm:py-20" />,
+})
+
+const FeaturedUseCases = dynamic(() => import("@/components/featured-usecases").then(m => ({ default: m.FeaturedUseCases })), {
+  loading: () => <div className="py-16 sm:py-20" />,
+})
 
 export default function Home() {
   return (

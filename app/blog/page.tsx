@@ -5,8 +5,8 @@ import { BlogListClient } from "./blog-list-client"
 import { createAdminClient } from "@/lib/supabase"
 import type { Article } from "@/lib/blog"
 
-// Force dynamic rendering so content is always fresh (not cached at build time)
-export const dynamic = "force-dynamic"
+// Revalidate every 60 seconds so content stays fresh without hitting DB on every request
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: "博客 & 教程 | Blog & Tutorials - OpenClaw Hub",
