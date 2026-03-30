@@ -22,14 +22,16 @@ import {
   Info,
   Zap,
   ChevronRight,
+  PenLine,
 } from "lucide-react"
 import { useState, useEffect } from "react"
 
 const navItems = [
   { href: "/#quickstart", key: "nav.quickstart", icon: Rocket, group: "start" },
   { href: "/install", key: "nav.install", icon: Download, group: "start" },
-  { href: "/skills", key: "nav.skills", icon: Puzzle, group: "browse" },
   { href: "/usecases", key: "nav.usecases", icon: Lightbulb, group: "browse" },
+  { href: "/skills", key: "nav.skills", icon: Puzzle, group: "browse" },
+  { href: "/blog", key: "nav.blog", icon: PenLine, group: "browse" },
   { href: "/api-recommend", key: "nav.apiRecommend", icon: Cpu, group: "more" },
   { href: "/news", key: "nav.news", icon: BookOpen, group: "more" },
   { href: "/about", key: "nav.about", icon: Info, group: "more" },
@@ -95,10 +97,8 @@ export function Header() {
                   <Comp
                     key={item.key}
                     href={item.href}
-                    className={`relative flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-all ${
-                      active
-                        ? "text-primary"
-                        : "text-muted-foreground hover:text-foreground"
+                    className={`relative flex items-center gap-1.5 rounded-md px-2.5 py-2 text-sm font-medium transition-all ${
+                      active ? "text-primary" : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     <Icon className="h-4 w-4" />
@@ -111,7 +111,7 @@ export function Header() {
               })}
           </div>
 
-          <span className="mx-2 h-4 w-px bg-border/50" aria-hidden />
+          <span className="mx-1.5 h-4 w-px bg-border/50" aria-hidden />
 
           {/* Browse group */}
           <div className="flex items-center">
@@ -124,7 +124,7 @@ export function Header() {
                   <Link
                     key={item.key}
                     href={item.href}
-                    className={`relative flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-all ${
+                    className={`relative flex items-center gap-1.5 rounded-md px-2.5 py-2 text-sm font-medium transition-all ${
                       active
                         ? "text-primary"
                         : "text-muted-foreground hover:text-foreground"
@@ -140,7 +140,7 @@ export function Header() {
               })}
           </div>
 
-          <span className="mx-2 h-4 w-px bg-border/50" aria-hidden />
+          <span className="mx-1.5 h-4 w-px bg-border/50" aria-hidden />
 
           {/* More group */}
           <div className="flex items-center">
@@ -153,7 +153,7 @@ export function Header() {
                   <Link
                     key={item.key}
                     href={item.href}
-                    className={`relative flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-all ${
+                    className={`relative flex items-center gap-1.5 rounded-md px-2.5 py-2 text-sm font-medium transition-all ${
                       active
                         ? "text-primary"
                         : "text-muted-foreground hover:text-foreground"
@@ -198,15 +198,6 @@ export function Header() {
               <Github className="h-3.5 w-3.5" />
             </Link>
           </Button>
-
-          {/* Quick Start CTA - desktop only */}
-          <Link
-            href="/#quickstart"
-            className="ml-1.5 hidden items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-xs font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md md:inline-flex"
-          >
-            <Zap className="h-3 w-3" />
-            {t("nav.quickstart.cta")}
-          </Link>
 
           {/* Mobile Menu Toggle */}
           <Button
