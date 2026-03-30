@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     images: ["/logo.png"],
   },
   alternates: {
-    canonical: siteUrl,
+    canonical: "/",
   },
   verification: {
     google: "googleaa30782c42ce8f8d",
