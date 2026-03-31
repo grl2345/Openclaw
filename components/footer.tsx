@@ -176,6 +176,10 @@ export function Footer() {
             © {new Date().getFullYear()} {t("footer.copyright")}. {t("footer.rights")}
           </p>
           <div className="flex items-center gap-3 text-xs text-muted-foreground">
+            <Link href="/contact" className="transition-colors hover:text-foreground">
+              {isZh ? "联系我们" : "Contact"}
+            </Link>
+            <span className="text-border">|</span>
             <Link href="/privacy" className="transition-colors hover:text-foreground">
               {isZh ? "隐私政策" : "Privacy Policy"}
             </Link>
