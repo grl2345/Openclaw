@@ -153,11 +153,23 @@ export function BlogListClient({ initialArticles, initialCount }: { initialArtic
   )
 }
 
+function optimizeCoverUrl(url: string | null): string | null {
+  if (!url) return null
+  try {
+    const u = new URL(url)
+    if (u.hostname.endsWith(".supabase.co") || u.hostname.endsWith(".supabase.in")) {
+      return `/api/img?url=${encodeURIComponent(url)}&w=600&q=75`
+    }
+  } catch {}
+  return url
+}
+
 function ArticleCard({ article, isZh }: { article: Article; isZh: boolean }) {
   const title = article.title_zh || article.title_en
   const excerpt = article.excerpt_zh || article.excerpt_en
   const categoryLabel = getCategoryLabel(article.category, isZh ? "zh" : "en")
   const date = article.published_at || article.created_at
+  const coverSrc = optimizeCoverUrl(article.cover_image)
 
   return (
     <Link
@@ -165,10 +177,10 @@ function ArticleCard({ article, isZh }: { article: Article; isZh: boolean }) {
       className="group flex flex-col rounded-xl border border-border/50 bg-card/60 backdrop-blur-sm transition-all hover:border-primary/40 hover:bg-card hover:shadow-md"
     >
       {/* 封面图 */}
-      {article.cover_image ? (
-        <div className="relative h-44 w-full overflow-hidden rounded-t-xl">
+      {coverSrc ? (
+        <div className="relative h-44 w-full overflow-hidden rounded-t-xl bg-muted/40">
           <img
-            src={article.cover_image}
+            src={coverSrc}
             alt={title}
             loading="lazy"
             decoding="async"

@@ -95,6 +95,26 @@ function safeColorToken(token: string): string | null {
   return null
 }
 
+/**
+ * Rewrite Supabase storage URLs to go through /api/img proxy for optimization.
+ * Already-optimized .webp images and non-Supabase URLs are left as-is.
+ */
+function optimizeImageUrl(src: string): string {
+  try {
+    const u = new URL(src)
+    // Only proxy Supabase storage URLs that are not already webp
+    if (
+      (u.hostname.endsWith(".supabase.co") || u.hostname.endsWith(".supabase.in")) &&
+      !u.pathname.endsWith(".webp")
+    ) {
+      return `/api/img?url=${encodeURIComponent(src)}&w=800&q=78`
+    }
+  } catch {
+    // Not a valid URL, return as-is
+  }
+  return src
+}
+
 export function markdownToHtml(md: string): string {
   if (!md) return ""
   let html = md
@@ -158,7 +178,8 @@ export function markdownToHtml(md: string): string {
   html = html.replace(/!\[([^\]]*)\]\(\s*([^)\s]+)\s*(?:\s+"([^"]*)")?\)/g, (_, alt, src, title) => {
     const caption = alt ? `<figcaption class="text-center text-xs text-muted-foreground mt-2">${escHtml(alt)}</figcaption>` : ""
     const titleAttr = title ? ` title="${escHtml(title)}"` : ""
-    return `<figure class="my-6"><img src="${src}" alt="${escHtml(alt)}"${titleAttr} class="rounded-xl w-full object-cover shadow-sm" loading="lazy" onload="this.dataset.loaded='true'" />${caption}</figure>`
+    const optimizedSrc = optimizeImageUrl(src)
+    return `<figure class="my-6"><img src="${optimizedSrc}" alt="${escHtml(alt)}"${titleAttr} class="rounded-xl w-full object-cover shadow-sm" loading="lazy" onload="this.dataset.loaded='true'" />${caption}</figure>`
   })
 
   // ── links ──────────────────────────────────────────────────────────────

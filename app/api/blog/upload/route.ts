@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server"
+import sharp from "sharp"
 import { createAdminClient } from "@/lib/supabase"
 
 const BUCKET = "article-images"
 const MAX_SIZE = 5 * 1024 * 1024 // 5 MB
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/svg+xml"]
+const OPTIMIZE_MAX_WIDTH = 1200
+const OPTIMIZE_QUALITY = 80
 
 function checkAdminAuth(req: NextRequest) {
   const token = req.headers.get("authorization")?.replace("Bearer ", "")
@@ -29,15 +32,36 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "File too large (max 5 MB)" }, { status: 400 })
   }
 
-  const ext = file.name.split(".").pop() || "jpg"
+  const arrayBuffer = await file.arrayBuffer()
+  const inputBuffer = Buffer.from(arrayBuffer)
+
+  // Optimize: resize + convert to WebP (skip SVG and GIF)
+  const skipOptimize = file.type === "image/svg+xml" || file.type === "image/gif"
+  let uploadBuffer: Buffer | ArrayBuffer = inputBuffer
+  let contentType = file.type
+  let ext = file.name.split(".").pop() || "jpg"
+
+  if (!skipOptimize) {
+    try {
+      uploadBuffer = await sharp(inputBuffer)
+        .resize(OPTIMIZE_MAX_WIDTH, undefined, { withoutEnlargement: true, fit: "inside" })
+        .webp({ quality: OPTIMIZE_QUALITY })
+        .toBuffer()
+      contentType = "image/webp"
+      ext = "webp"
+    } catch {
+      // If sharp fails, upload original
+      uploadBuffer = arrayBuffer
+    }
+  }
+
   const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
   const path = `articles/${fileName}`
 
   const supabase = createAdminClient()
-  const arrayBuffer = await file.arrayBuffer()
   const { error } = await supabase.storage
     .from(BUCKET)
-    .upload(path, arrayBuffer, { contentType: file.type, upsert: false })
+    .upload(path, uploadBuffer, { contentType, upsert: false })
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 
