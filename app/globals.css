@@ -145,6 +145,13 @@
 .prose-custom img {
   border-radius: 0.75rem;
   max-width: 100%;
+  background: var(--muted);
+  min-height: 120px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.prose-custom img[data-loaded="true"] {
+  opacity: 1;
 }
 .prose-custom mark {
   color: var(--foreground);

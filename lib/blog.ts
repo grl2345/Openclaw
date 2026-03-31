@@ -158,7 +158,7 @@ export function markdownToHtml(md: string): string {
   html = html.replace(/!\[([^\]]*)\]\(\s*([^)\s]+)\s*(?:\s+"([^"]*)")?\)/g, (_, alt, src, title) => {
     const caption = alt ? `<figcaption class="text-center text-xs text-muted-foreground mt-2">${escHtml(alt)}</figcaption>` : ""
     const titleAttr = title ? ` title="${escHtml(title)}"` : ""
-    return `<figure class="my-6"><img src="${src}" alt="${escHtml(alt)}"${titleAttr} class="rounded-xl w-full object-cover shadow-sm" loading="lazy" />${caption}</figure>`
+    return `<figure class="my-6"><img src="${src}" alt="${escHtml(alt)}"${titleAttr} class="rounded-xl w-full object-cover shadow-sm" loading="lazy" onload="this.dataset.loaded='true'" />${caption}</figure>`
   })
 
   // ── links ──────────────────────────────────────────────────────────────
