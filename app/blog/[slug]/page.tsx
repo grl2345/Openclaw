@@ -102,10 +102,31 @@ export default async function ArticleDetailPage({
   const date = article.published_at || article.created_at
   const htmlContent = markdownToHtml(content)
   const words = countWords(content, "zh")
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.openclaw-s.com"
+
+  // JSON-LD structured data for search engines
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    description: excerpt,
+    url: `${baseUrl}/blog/${article.slug}`,
+    author: { "@type": "Person", name: article.author },
+    ...(article.published_at ? { datePublished: article.published_at } : {}),
+    ...(article.updated_at ? { dateModified: article.updated_at } : {}),
+    ...(article.cover_image ? { image: article.cover_image } : {}),
+    wordCount: words,
+    keywords: article.tags.join(", "),
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
+      {/* JSON-LD for search engines */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Client component to track view count */}
       <ViewTracker slug={slug} />
       <main className="pt-16">

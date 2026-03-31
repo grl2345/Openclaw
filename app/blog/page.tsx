@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BlogListClient } from "./blog-list-client"
 import { createAdminClient } from "@/lib/supabase"
-import type { Article } from "@/lib/blog"
+import { getCategoryLabel, type Article } from "@/lib/blog"
 
 // Revalidate every 60 seconds so content stays fresh without hitting DB on every request
 export const revalidate = 60
@@ -59,9 +60,34 @@ async function getPublishedArticles(): Promise<{ articles: Article[]; count: num
 export default async function BlogPage() {
   const { articles, count } = await getPublishedArticles()
 
+  // JSON-LD structured data for SEO
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "OpenClaw Hub 博客 & 教程",
+    description: "OpenClaw Hub 原创技术博客与实战教程",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.openclaw-s.com"}/blog`,
+    blogPost: articles.map((a) => ({
+      "@type": "BlogPosting",
+      headline: a.title_zh || a.title_en,
+      description: a.excerpt_zh || a.excerpt_en,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.openclaw-s.com"}/blog/${a.slug}`,
+      author: { "@type": "Person", name: a.author },
+      ...(a.published_at ? { datePublished: a.published_at } : {}),
+      ...(a.cover_image ? { image: a.cover_image } : {}),
+    })),
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
+
+      {/* JSON-LD for search engines */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <main className="pt-16">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
           {/* ── 页头 (static, rendered server-side for SEO) ──── */}
@@ -76,6 +102,34 @@ export default async function BlogPage() {
               OpenClaw Hub 原创技术博客与实战教程，帮你更快掌握 AI 助理
             </p>
           </header>
+
+          {/*
+            ── Server-rendered article list for SEO ────────────
+            This section is always in the HTML source so search engine crawlers
+            can discover all article titles, excerpts, and links even without
+            executing JavaScript. The client component below replaces the visual
+            rendering with interactive search/filter/pagination.
+          */}
+          {articles.length > 0 && (
+            <section className="sr-only" aria-label="文章列表">
+              <h2>全部文章</h2>
+              <ul>
+                {articles.map((a) => (
+                  <li key={a.id}>
+                    <article>
+                      <h3>
+                        <Link href={`/blog/${a.slug}`}>{a.title_zh || a.title_en}</Link>
+                      </h3>
+                      <p>{a.excerpt_zh || a.excerpt_en}</p>
+                      <span>{getCategoryLabel(a.category, "zh")}</span>
+                      {a.tags.length > 0 && <span>{a.tags.join(", ")}</span>}
+                      {a.published_at && <time dateTime={a.published_at}>{a.published_at.slice(0, 10)}</time>}
+                    </article>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
 
           {/* ── Interactive client part (search, filter, cards) ── */}
           <BlogListClient initialArticles={articles} initialCount={count} />
