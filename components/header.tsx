@@ -17,15 +17,18 @@ import {
   Info,
   ChevronRight,
   PenLine,
+  Newspaper,
+  History,
 } from "lucide-react"
 import { useState, useEffect } from "react"
 
 const navItems = [
-  { href: "/install",       label: "新手上手", icon: Rocket   },
-  { href: "/blog",          label: "原创教程", icon: PenLine  },
-  { href: "/usecases",      label: "场景案例", icon: Lightbulb },
-  { href: "/api-recommend", label: "模型 API", icon: Cpu      },
-  { href: "/about",         label: "关于我们", icon: Info      },
+  { href: "/news",          label: "新闻动态", labelEn: "News",      icon: Newspaper },
+  { href: "/blog",          label: "教程",     labelEn: "Tutorials", icon: PenLine   },
+  { href: "/skills",        label: "技能库",   labelEn: "Skills",    icon: Lightbulb },
+  { href: "/changelog",     label: "版本更新", labelEn: "Changelog", icon: History   },
+  { href: "/api-recommend", label: "模型 API", labelEn: "Model API", icon: Cpu       },
+  { href: "/about",         label: "关于",     labelEn: "About",     icon: Info      },
 ] as const
 
 export function Header() {

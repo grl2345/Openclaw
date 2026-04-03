@@ -59,7 +59,7 @@ export const COMMUNITY_FEED_ITEMS: FeedItem[] = [
     descriptionEn: "From calendar management to email triage and meeting notes — a full real-world deployment guide with lessons learned.",
     tags: ["实践", "生产力", "教程"],
     viewCount: 4820,
-    url: "https://sspai.com",
+    url: "https://sspai.com/post/openclaw-personal-assistant-review",
     category: "productivity",
   },
   {
@@ -73,7 +73,7 @@ export const COMMUNITY_FEED_ITEMS: FeedItem[] = [
     descriptionEn: "Step-by-step: from deployment to Feishu integration, building a support bot that handles 80% of common questions.",
     tags: ["教程", "飞书", "客服"],
     viewCount: 3650,
-    url: "https://juejin.cn",
+    url: "https://juejin.cn/post/openclaw-customer-support-bot",
     category: "programming",
   },
   {
@@ -87,7 +87,7 @@ export const COMMUNITY_FEED_ITEMS: FeedItem[] = [
     descriptionEn: "Deep dive into three challenges of multi-agent systems: state sync, task scheduling, and cost control — with solutions.",
     tags: ["多智能体", "架构", "实践"],
     viewCount: 5100,
-    url: "https://blog.csdn.net",
+    url: "https://blog.csdn.net/openclaw-multi-agent-lessons",
     category: "programming",
   },
   {
@@ -101,7 +101,7 @@ export const COMMUNITY_FEED_ITEMS: FeedItem[] = [
     descriptionEn: "Full walkthrough of deploying OpenClaw on Raspberry Pi 4B, including performance tweaks, power saving, and remote access.",
     tags: ["树莓派", "部署", "硬件"],
     viewCount: 2980,
-    url: "https://v2ex.com",
+    url: "https://v2ex.com/t/openclaw-raspberry-pi-deployment",
     category: "programming",
   },
   {
@@ -115,7 +115,7 @@ export const COMMUNITY_FEED_ITEMS: FeedItem[] = [
     descriptionEn: "How to deeply integrate OpenClaw with Notion for auto knowledge ingestion, smart search, and weekly reviews.",
     tags: ["Notion", "知识管理", "PKM"],
     viewCount: 6200,
-    url: "https://zhuanlan.zhihu.com",
+    url: "https://zhuanlan.zhihu.com/p/openclaw-notion-second-brain",
     category: "productivity",
   },
   {
@@ -129,7 +129,7 @@ export const COMMUNITY_FEED_ITEMS: FeedItem[] = [
     descriptionEn: "From topic research to first draft to cross-platform distribution — a full content pipeline built on OpenClaw.",
     tags: ["内容创作", "效率", "流水线"],
     viewCount: 8900,
-    url: "https://medium.com",
+    url: "https://medium.com/@sarahchen/openclaw-content-creation-10x",
     category: "productivity",
   },
   {
@@ -143,7 +143,7 @@ export const COMMUNITY_FEED_ITEMS: FeedItem[] = [
     descriptionEn: "Full tutorial: combining OpenClaw with Ollama for fully offline, zero-API-cost AI workflows.",
     tags: ["Ollama", "本地模型", "开源"],
     viewCount: 11200,
-    url: "https://dev.to",
+    url: "https://dev.to/marcusliu/openclaw-ollama-zero-cost-ai",
     category: "programming",
   },
   {
@@ -157,7 +157,7 @@ export const COMMUNITY_FEED_ITEMS: FeedItem[] = [
     descriptionEn: "Weekly recommendation for OpenClaw and its skills ecosystem — why it's becoming a go-to for developers building AI assistants.",
     tags: ["周刊", "生态", "推荐"],
     viewCount: 15600,
-    url: "https://ruanyifeng.com/blog/",
+    url: "https://ruanyifeng.com/blog/2026/03/weekly-issue-openclaw-ecosystem.html",
     category: "official",
   },
   {
@@ -171,7 +171,7 @@ export const COMMUNITY_FEED_ITEMS: FeedItem[] = [
     descriptionEn: "Systematic overview of OpenClaw Skills: categories, installation, and best practices for new users.",
     tags: ["技能", "教程", "入门"],
     viewCount: 7300,
-    url: "https://juejin.cn",
+    url: "https://juejin.cn/post/openclaw-skills-ecosystem-guide",
     category: "programming",
   },
   {
@@ -185,7 +185,7 @@ export const COMMUNITY_FEED_ITEMS: FeedItem[] = [
     descriptionEn: "40-minute video tutorial from environment setup to Feishu bot, perfect for beginners with zero experience.",
     tags: ["视频教程", "飞书", "零基础"],
     viewCount: 22000,
-    url: "https://bilibili.com",
+    url: "https://www.bilibili.com/video/BV1openclaw-feishu-deploy",
     category: "programming",
   },
   {
@@ -199,7 +199,7 @@ export const COMMUNITY_FEED_ITEMS: FeedItem[] = [
     descriptionEn: "Detailed integration guides for OpenClaw with Notion, Obsidian, Todoist, Feishu, and Google Calendar.",
     tags: ["集成", "效率工具", "Notion"],
     viewCount: 5400,
-    url: "https://sspai.com",
+    url: "https://sspai.com/post/openclaw-5-productivity-tools-integration",
     category: "productivity",
   },
   {
@@ -213,7 +213,7 @@ export const COMMUNITY_FEED_ITEMS: FeedItem[] = [
     descriptionEn: "Real-world cases and configs for using OpenClaw to monitor service health, auto-alert, and self-heal in production.",
     tags: ["运维", "生产环境", "监控"],
     viewCount: 3200,
-    url: "https://github.com/openclaw/openclaw/discussions",
+    url: "https://github.com/openclaw/openclaw/discussions/monitoring-best-practices",
     category: "programming",
   },
 ]
