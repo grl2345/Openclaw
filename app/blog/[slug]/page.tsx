@@ -10,6 +10,7 @@ import { markdownToHtml, getCategoryLabel, countWords, type Article } from "@/li
 import { createAdminClient } from "@/lib/supabase"
 import { format } from "date-fns"
 import { ViewTracker } from "./view-tracker"
+import { GiscusComments } from "@/components/giscus-comments"
 
 async function getArticleBySlug(slug: string): Promise<Article | null> {
   try {
@@ -176,6 +177,9 @@ export default async function ArticleDetailPage({
             className="prose-custom min-h-32"
             dangerouslySetInnerHTML={{ __html: htmlContent }}
           />
+
+          {/* ── 评论 ─────────────────────────────────────────────── */}
+          <GiscusComments term={slug} />
 
           {/* ── 底部 ─────────────────────────────────────────────── */}
           <footer className="mt-12 border-t border-border/50 pt-8">
