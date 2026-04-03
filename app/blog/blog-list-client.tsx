@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { useI18n } from "@/lib/i18n"
 import { ARTICLE_CATEGORIES, getCategoryLabel, type Article, type ArticleCategory } from "@/lib/blog"
 import { Search, BookOpen, Clock, Eye, Tag, ChevronRight, PenLine, Loader2 } from "lucide-react"
 import { format } from "date-fns"
@@ -10,8 +9,6 @@ import { format } from "date-fns"
 const LIMIT = 12
 
 export function BlogListClient({ initialArticles, initialCount }: { initialArticles: Article[]; initialCount: number }) {
-  const { locale } = useI18n()
-  const isZh = locale === "zh"
 
   const [articles, setArticles] = useState<Article[]>(initialArticles)
   const [loading, setLoading] = useState(false)
@@ -83,7 +80,7 @@ export function BlogListClient({ initialArticles, initialCount }: { initialArtic
             type="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder={isZh ? "搜索文章…" : "Search articles…"}
+            placeholder={"搜索文章…"}
             className="w-full rounded-xl border border-border/60 bg-card/50 py-3 pl-11 pr-4 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20"
           />
         </div>
@@ -99,7 +96,7 @@ export function BlogListClient({ initialArticles, initialCount }: { initialArtic
               : "bg-muted text-muted-foreground hover:text-foreground"
           }`}
         >
-          {isZh ? "全部" : "All"}
+          {"全部"}
         </button>
         {ARTICLE_CATEGORIES.map((cat) => (
           <button
@@ -111,7 +108,7 @@ export function BlogListClient({ initialArticles, initialCount }: { initialArtic
                 : "bg-muted text-muted-foreground hover:text-foreground"
             }`}
           >
-            {isZh ? cat.labelZh : cat.labelEn}
+            {cat.labelZh}
           </button>
         ))}
       </div>
@@ -120,17 +117,17 @@ export function BlogListClient({ initialArticles, initialCount }: { initialArtic
       {loading && articles.length === 0 ? (
         <div className="flex items-center justify-center py-24 text-muted-foreground">
           <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-          {isZh ? "加载中…" : "Loading…"}
+          {"加载中…"}
         </div>
       ) : filtered.length === 0 ? (
         <div className="rounded-xl border border-dashed border-border/60 py-16 text-center text-sm text-muted-foreground">
-          {isZh ? "暂无文章，敬请期待 ✍️" : "No articles yet — stay tuned ✍️"}
+          {"暂无文章，敬请期待"}
         </div>
       ) : (
         <>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((article) => (
-              <ArticleCard key={article.id} article={article} isZh={isZh} />
+              <ArticleCard key={article.id} article={article} />
             ))}
           </div>
 
@@ -143,7 +140,7 @@ export function BlogListClient({ initialArticles, initialCount }: { initialArtic
                 className="flex items-center gap-2 rounded-full border border-border/60 bg-card px-6 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground disabled:opacity-50"
               >
                 {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-                {isZh ? "加载更多" : "Load more"}
+                {"加载更多"}
               </button>
             </div>
           )}
@@ -164,10 +161,10 @@ function optimizeCoverUrl(url: string | null): string | null {
   return url
 }
 
-function ArticleCard({ article, isZh }: { article: Article; isZh: boolean }) {
+function ArticleCard({ article }: { article: Article }) {
   const title = article.title_zh || article.title_en
   const excerpt = article.excerpt_zh || article.excerpt_en
-  const categoryLabel = getCategoryLabel(article.category, isZh ? "zh" : "en")
+  const categoryLabel = getCategoryLabel(article.category, "zh")
   const date = article.published_at || article.created_at
   const coverSrc = optimizeCoverUrl(article.cover_image)
 
@@ -237,7 +234,7 @@ function ArticleCard({ article, isZh }: { article: Article; isZh: boolean }) {
             {format(new Date(date), "yyyy-MM-dd")}
           </span>
           <span className="flex items-center gap-1 font-medium text-foreground/70">
-            {isZh ? "阅读" : "Read"}
+            阅读
             <ChevronRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5 text-primary" />
           </span>
         </div>

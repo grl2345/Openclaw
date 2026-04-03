@@ -518,27 +518,27 @@ function ArticleEditor({
     }, "文字")
   }
 
-  const toolbarButtons = [
-    { icon: <Heading2 className="h-4 w-4" />, title: "H2", action: () => insertText("\n## ", "", "标题") },
-    { icon: <Heading3 className="h-4 w-4" />, title: "H3", action: () => insertText("\n### ", "", "标题") },
-    { icon: <Bold className="h-4 w-4" />, title: "粗体", action: () => insertText("**", "**", "粗体") },
-    { icon: <Italic className="h-4 w-4" />, title: "斜体", action: () => insertText("*", "*", "斜体") },
-    { icon: <RemoveFormatting className="h-4 w-4" />, title: "清除格式", action: clearFormatting },
-    { icon: <Palette className="h-4 w-4 text-rose-500" />, title: "文字(红)", action: () => applyTextColor("red") },
-    { icon: <Palette className="h-4 w-4 text-amber-500" />, title: "文字(橙)", action: () => applyTextColor("orange") },
-    { icon: <Palette className="h-4 w-4 text-emerald-500" />, title: "文字(绿)", action: () => applyTextColor("green") },
-    { icon: <Palette className="h-4 w-4 text-sky-500" />, title: "文字(蓝)", action: () => applyTextColor("blue") },
-    { icon: <Palette className="h-4 w-4 text-violet-500" />, title: "文字(紫)", action: () => applyTextColor("purple") },
-    { icon: <Highlighter className="h-4 w-4 text-yellow-500" />, title: "高亮(黄)", action: () => applyHighlight("yellow") },
-    { icon: <Highlighter className="h-4 w-4 text-emerald-500" />, title: "高亮(绿)", action: () => applyHighlight("green") },
-    { icon: <Highlighter className="h-4 w-4 text-sky-500" />, title: "高亮(蓝)", action: () => applyHighlight("blue") },
-    { icon: <Highlighter className="h-4 w-4 text-pink-500" />, title: "高亮(粉)", action: () => applyHighlight("pink") },
-    { icon: <Code className="h-4 w-4" />, title: "代码", action: () => insertText("`", "`", "代码") },
-    { icon: <LinkIcon className="h-4 w-4" />, title: "链接", action: () => insertText("[", "](https://)", "链接文字") },
-    { icon: <List className="h-4 w-4" />, title: "无序列表", action: () => insertText("\n- ", "", "列表项") },
-    { icon: <ListOrdered className="h-4 w-4" />, title: "有序列表", action: () => insertText("\n1. ", "", "列表项") },
-    { icon: <Quote className="h-4 w-4" />, title: "引用", action: () => insertText("\n> ", "", "引用内容") },
-    { icon: <Minus className="h-4 w-4" />, title: "分割线", action: () => insertAtCursor("\n\n---\n\n") },
+  const toolbarButtons: { icon: React.ReactNode; title: string; action: (e: React.MouseEvent<HTMLButtonElement>) => void }[] = [
+    { icon: <Heading2 className="h-4 w-4" />, title: "H2", action: (e) => { e.preventDefault(); insertText("\n## ", "", "标题") } },
+    { icon: <Heading3 className="h-4 w-4" />, title: "H3", action: (e) => { e.preventDefault(); insertText("\n### ", "", "标题") } },
+    { icon: <Bold className="h-4 w-4" />, title: "粗体", action: (e) => { e.preventDefault(); insertText("**", "**", "粗体") } },
+    { icon: <Italic className="h-4 w-4" />, title: "斜体", action: (e) => { e.preventDefault(); insertText("*", "*", "斜体") } },
+    { icon: <RemoveFormatting className="h-4 w-4" />, title: "清除格式", action: (e) => { e.preventDefault(); clearFormatting() } },
+    { icon: <Palette className="h-4 w-4 text-rose-500" />, title: "文字(红)", action: (e) => { e.preventDefault(); applyTextColor("red") } },
+    { icon: <Palette className="h-4 w-4 text-amber-500" />, title: "文字(橙)", action: (e) => { e.preventDefault(); applyTextColor("orange") } },
+    { icon: <Palette className="h-4 w-4 text-emerald-500" />, title: "文字(绿)", action: (e) => { e.preventDefault(); applyTextColor("green") } },
+    { icon: <Palette className="h-4 w-4 text-sky-500" />, title: "文字(蓝)", action: (e) => { e.preventDefault(); applyTextColor("blue") } },
+    { icon: <Palette className="h-4 w-4 text-violet-500" />, title: "文字(紫)", action: (e) => { e.preventDefault(); applyTextColor("purple") } },
+    { icon: <Highlighter className="h-4 w-4 text-yellow-500" />, title: "高亮(黄)", action: (e) => { e.preventDefault(); applyHighlight("yellow") } },
+    { icon: <Highlighter className="h-4 w-4 text-emerald-500" />, title: "高亮(绿)", action: (e) => { e.preventDefault(); applyHighlight("green") } },
+    { icon: <Highlighter className="h-4 w-4 text-sky-500" />, title: "高亮(蓝)", action: (e) => { e.preventDefault(); applyHighlight("blue") } },
+    { icon: <Highlighter className="h-4 w-4 text-pink-500" />, title: "高亮(粉)", action: (e) => { e.preventDefault(); applyHighlight("pink") } },
+    { icon: <Code className="h-4 w-4" />, title: "代码", action: (e) => { e.preventDefault(); insertText("`", "`", "代码") } },
+    { icon: <LinkIcon className="h-4 w-4" />, title: "链接", action: (e) => { e.preventDefault(); insertText("[", "](https://)", "链接文字") } },
+    { icon: <List className="h-4 w-4" />, title: "无序列表", action: (e) => { e.preventDefault(); insertText("\n- ", "", "列表项") } },
+    { icon: <ListOrdered className="h-4 w-4" />, title: "有序列表", action: (e) => { e.preventDefault(); insertText("\n1. ", "", "列表项") } },
+    { icon: <Quote className="h-4 w-4" />, title: "引用", action: (e) => { e.preventDefault(); insertText("\n> ", "", "引用内容") } },
+    { icon: <Minus className="h-4 w-4" />, title: "分割线", action: (e) => { e.preventDefault(); insertAtCursor("\n\n---\n\n") } },
   ]
 
   // ── Upload cover image ──────────────────────────────────────────────────────
@@ -848,6 +848,7 @@ function ArticleEditor({
                     key={btn.title}
                     title={btn.title}
                     onClick={btn.action}
+                    type="button"
                     className="rounded-md p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
                   >
                     {btn.icon}
@@ -859,6 +860,7 @@ function ArticleEditor({
                   title="插入图片"
                   disabled={uploadingInline}
                   onClick={() => inlineInputRef.current?.click()}
+                  type="button"
                   className="flex items-center gap-1 rounded-md px-2 py-1.5 text-xs text-muted-foreground hover:bg-muted hover:text-foreground disabled:opacity-50"
                 >
                   {uploadingInline
