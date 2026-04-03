@@ -11,6 +11,7 @@ import { createAdminClient } from "@/lib/supabase"
 import { format } from "date-fns"
 import { ViewTracker } from "./view-tracker"
 import { GiscusComments } from "@/components/giscus-comments"
+import { AdSlot } from "@/components/ad-slot"
 
 async function getArticleBySlug(slug: string): Promise<Article | null> {
   try {
@@ -177,6 +178,9 @@ export default async function ArticleDetailPage({
             className="prose-custom min-h-32"
             dangerouslySetInnerHTML={{ __html: htmlContent }}
           />
+
+          {/* ── 文章底部广告位 ───────────────────────────────────── */}
+          <AdSlot slot="article-bottom" className="my-8" />
 
           {/* ── 评论 ─────────────────────────────────────────────── */}
           <GiscusComments term={slug} />

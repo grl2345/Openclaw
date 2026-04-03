@@ -7,6 +7,7 @@ import { LeftSidebar } from "@/components/left-sidebar"
 import { RightSidebar } from "@/components/right-sidebar"
 import { Hero } from "@/components/hero"
 import { QuickStart } from "@/components/quickstart"
+import { AdSlot } from "@/components/ad-slot"
 
 const LatestNews = dynamic(() => import("@/components/latest-news").then(m => ({ default: m.LatestNews })), {
   loading: () => <div className="py-12" />,
@@ -43,6 +44,8 @@ export default function Home() {
           {/* Main Content */}
           <main className="min-w-0 flex-1">
             <LatestNews />
+            {/* Ad — content inline (between news and changelog) */}
+            <AdSlot slot="content-inline" className="my-6" />
             <LatestChangelog />
             <FeaturedSkills />
             <FeaturedUseCases />

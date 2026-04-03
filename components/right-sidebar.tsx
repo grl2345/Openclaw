@@ -4,7 +4,8 @@ import { useI18n } from "@/lib/i18n"
 import { allSkills } from "@/lib/all-skills"
 import { COMMUNITY_FEED_ITEMS } from "@/lib/news-feed"
 import Link from "next/link"
-import { Flame, Clock, ExternalLink } from "lucide-react"
+import { Flame, Clock } from "lucide-react"
+import { AdSlot } from "@/components/ad-slot"
 
 // Pick 8 popular skills for the hot tools grid
 const HOT_SKILL_IDS = [
@@ -33,7 +34,10 @@ export function RightSidebar() {
 
   return (
     <aside className="hidden xl:block w-64 shrink-0">
-      <div className="sticky top-[4.5rem] max-h-[calc(100vh-5rem)] overflow-y-auto space-y-6 py-4 pb-8">
+      <div className="sticky top-[4.5rem] max-h-[calc(100vh-5rem)] overflow-y-auto space-y-5 py-4 pb-8">
+
+        {/* Ad Slot — Top Banner (like TRAE ad in screenshot) */}
+        <AdSlot slot="sidebar-top" />
 
         {/* Hot Skills */}
         <div className="rounded-xl border border-border/60 bg-card/50 p-4">
@@ -69,6 +73,9 @@ export function RightSidebar() {
             {isZh ? "查看全部 →" : "View all →"}
           </Link>
         </div>
+
+        {/* Ad Slot — Mid Banner (like iTab ad in screenshot) */}
+        <AdSlot slot="sidebar-mid" />
 
         {/* Latest News */}
         <div className="rounded-xl border border-border/60 bg-card/50 p-4">
