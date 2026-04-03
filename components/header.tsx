@@ -21,6 +21,7 @@ import {
   History,
 } from "lucide-react"
 import { useState, useEffect } from "react"
+import { GlobalSearch } from "@/components/global-search"
 
 const navItems = [
   { href: "/news",          label: "新闻动态", labelEn: "News",      icon: Newspaper },
@@ -97,6 +98,7 @@ export function Header() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-1">
+          <GlobalSearch />
           <Button
             variant="ghost"
             size="icon"

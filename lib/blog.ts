@@ -2,6 +2,7 @@
 
 export type ArticleStatus = "draft" | "published"
 export type ArticleCategory = "tutorial" | "blog" | "guide" | "tips" | "release"
+export type ArticleDifficulty = "beginner" | "intermediate" | "advanced"
 
 export interface Article {
   id: string
@@ -21,6 +22,9 @@ export interface Article {
   published_at: string | null
   created_at: string
   updated_at: string
+  difficulty?: ArticleDifficulty
+  series_id?: string | null
+  series_order?: number | null
 }
 
 export type ArticleFormData = Omit<Article, "id" | "view_count" | "created_at" | "updated_at">
@@ -39,6 +43,77 @@ export function getCategoryLabel(cat: ArticleCategory, locale: "zh" | "en"): str
   const found = ARTICLE_CATEGORIES.find((c) => c.value === cat)
   if (!found) return cat
   return locale === "zh" ? found.labelZh : found.labelEn
+}
+
+// ─── Difficulty helpers ───────────────────────────────────────────────────────
+
+export const ARTICLE_DIFFICULTIES: { value: ArticleDifficulty; labelZh: string; labelEn: string; color: string }[] = [
+  { value: "beginner",     labelZh: "入门", labelEn: "Beginner",     color: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20" },
+  { value: "intermediate", labelZh: "进阶", labelEn: "Intermediate", color: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20" },
+  { value: "advanced",     labelZh: "高级", labelEn: "Advanced",     color: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20" },
+]
+
+export function getDifficultyLabel(diff: ArticleDifficulty | undefined, locale: "zh" | "en"): string {
+  if (!diff) return ""
+  const found = ARTICLE_DIFFICULTIES.find((d) => d.value === diff)
+  if (!found) return diff
+  return locale === "zh" ? found.labelZh : found.labelEn
+}
+
+export function getDifficultyColor(diff: ArticleDifficulty | undefined): string {
+  if (!diff) return ""
+  const found = ARTICLE_DIFFICULTIES.find((d) => d.value === diff)
+  return found?.color ?? ""
+}
+
+// ─── Series (tutorial learning paths) ────────────────────────────────────────
+
+export interface TutorialSeries {
+  id: string
+  titleZh: string
+  titleEn: string
+  descZh: string
+  descEn: string
+  difficulty: ArticleDifficulty
+}
+
+export const TUTORIAL_SERIES: TutorialSeries[] = [
+  {
+    id: "getting-started",
+    titleZh: "OpenClaw 入门之路",
+    titleEn: "Getting Started with OpenClaw",
+    descZh: "从零开始，手把手教你部署和使用 OpenClaw",
+    descEn: "Start from scratch: deploy and use OpenClaw step by step",
+    difficulty: "beginner",
+  },
+  {
+    id: "skill-development",
+    titleZh: "技能开发实战",
+    titleEn: "Skill Development in Practice",
+    descZh: "学会开发自定义技能，扩展 OpenClaw 的能力边界",
+    descEn: "Learn to develop custom skills and extend OpenClaw's capabilities",
+    difficulty: "intermediate",
+  },
+  {
+    id: "advanced-workflows",
+    titleZh: "高级工作流与自动化",
+    titleEn: "Advanced Workflows & Automation",
+    descZh: "掌握多步骤工作流、Webhook 集成与企业级部署",
+    descEn: "Master multi-step workflows, webhook integration, and enterprise deployment",
+    difficulty: "advanced",
+  },
+  {
+    id: "china-ecosystem",
+    titleZh: "国内生态集成指南",
+    titleEn: "China Ecosystem Integration",
+    descZh: "飞书、钉钉、企业微信等国内平台的完整对接教程",
+    descEn: "Complete integration guides for Feishu, DingTalk, WeCom, and more",
+    difficulty: "intermediate",
+  },
+]
+
+export function getSeriesById(id: string): TutorialSeries | undefined {
+  return TUTORIAL_SERIES.find((s) => s.id === id)
 }
 
 // ─── Slug generator ────────────────────────────────────────────────────────────

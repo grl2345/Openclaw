@@ -2,8 +2,19 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { ARTICLE_CATEGORIES, getCategoryLabel, type Article, type ArticleCategory } from "@/lib/blog"
-import { Search, BookOpen, Clock, Eye, Tag, ChevronRight, PenLine, Loader2 } from "lucide-react"
+import {
+  ARTICLE_CATEGORIES,
+  ARTICLE_DIFFICULTIES,
+  TUTORIAL_SERIES,
+  getCategoryLabel,
+  getDifficultyLabel,
+  getDifficultyColor,
+  getSeriesById,
+  type Article,
+  type ArticleCategory,
+  type ArticleDifficulty,
+} from "@/lib/blog"
+import { Search, BookOpen, Clock, Eye, Tag, ChevronRight, PenLine, Loader2, GraduationCap, BookMarked } from "lucide-react"
 import { format } from "date-fns"
 
 const LIMIT = 12
@@ -72,6 +83,36 @@ export function BlogListClient({ initialArticles, initialCount }: { initialArtic
 
   return (
     <>
+      {/* ── 学习路径 ─────────────────────────────────────────── */}
+      <div className="mb-10">
+        <div className="mb-4 flex items-center gap-2">
+          <BookMarked className="h-4 w-4 text-primary" />
+          <h2 className="text-lg font-semibold">{"系列教程 · 学习路径"}</h2>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {TUTORIAL_SERIES.map((series) => {
+            const diffMeta = ARTICLE_DIFFICULTIES.find((d) => d.value === series.difficulty)
+            return (
+              <div
+                key={series.id}
+                className="group rounded-xl border border-border/50 bg-card/60 p-4 transition-all hover:border-primary/40 hover:shadow-sm"
+              >
+                <div className="mb-2 flex items-center gap-2">
+                  <GraduationCap className="h-4 w-4 text-primary" />
+                  {diffMeta && (
+                    <span className={`inline-flex items-center rounded-full border px-1.5 py-0.5 text-[10px] font-medium ${diffMeta.color}`}>
+                      {diffMeta.labelZh}
+                    </span>
+                  )}
+                </div>
+                <h3 className="mb-1 text-sm font-semibold text-foreground">{series.titleZh}</h3>
+                <p className="text-xs text-muted-foreground line-clamp-2">{series.descZh}</p>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
       {/* ── 搜索 ───────────────────────────────────────────── */}
       <div className="mb-6">
         <div className="relative">
@@ -191,11 +232,18 @@ function ArticleCard({ article }: { article: Article }) {
       )}
 
       <div className="flex flex-1 flex-col p-5">
-        {/* 分类 + 阅读量 */}
+        {/* 分类 + 难度 + 阅读量 */}
         <div className="mb-2.5 flex items-center justify-between text-xs text-muted-foreground">
-          <span className="rounded-md bg-primary/10 px-2 py-0.5 font-medium text-primary">
-            {categoryLabel}
-          </span>
+          <div className="flex items-center gap-1.5">
+            <span className="rounded-md bg-primary/10 px-2 py-0.5 font-medium text-primary">
+              {categoryLabel}
+            </span>
+            {article.difficulty && (
+              <span className={`inline-flex items-center rounded-full border px-1.5 py-0.5 text-[10px] font-medium ${getDifficultyColor(article.difficulty)}`}>
+                {getDifficultyLabel(article.difficulty, "zh")}
+              </span>
+            )}
+          </div>
           <span className="flex items-center gap-1">
             <Eye className="h-3 w-3" />
             {article.view_count.toLocaleString()}
