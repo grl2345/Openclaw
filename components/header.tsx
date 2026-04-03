@@ -17,7 +17,7 @@ import {
   Newspaper,
   PenLine,
   History,
-  Code2,
+
   Rocket,
   Layout,
   Info,
@@ -32,7 +32,7 @@ const navItems = [
   { href: "/blog",          labelZh: "教程",      labelEn: "Tutorials",  icon: PenLine   },
   { href: "/usecases",      labelZh: "场景案例",  labelEn: "Use Cases",  icon: Layout    },
   { href: "/changelog",     labelZh: "版本更新",  labelEn: "Changelog",  icon: History   },
-  { href: "/api-docs",      labelZh: "API 文档",  labelEn: "API Docs",   icon: Code2     },
+
   { href: "/api-recommend", labelZh: "模型 API",  labelEn: "Model API",  icon: Cpu       },
   { href: "/about",         labelZh: "关于",      labelEn: "About",      icon: Info      },
 ] as const
