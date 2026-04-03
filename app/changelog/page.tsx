@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { PortalLayout } from "@/components/portal-layout"
 import { CHANGELOG } from "@/lib/changelog-data"
 import { History, ArrowRight, Users, GitBranch, ExternalLink } from "lucide-react"
 
@@ -31,15 +30,12 @@ export default function ChangelogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
-
+    <PortalLayout>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="pt-16">
         <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
           {/* Page header */}
           <header className="mb-12 text-center">
@@ -137,9 +133,6 @@ export default function ChangelogPage() {
             </a>
           </div>
         </div>
-      </main>
-
-      <Footer />
-    </div>
+    </PortalLayout>
   )
 }

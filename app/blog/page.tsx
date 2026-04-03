@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { PortalLayout } from "@/components/portal-layout"
 import { BlogListClient } from "./blog-list-client"
 import { createAdminClient } from "@/lib/supabase"
 import { getCategoryLabel, type Article } from "@/lib/blog"
@@ -79,16 +78,13 @@ export default async function BlogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
-
+    <PortalLayout>
       {/* JSON-LD for search engines */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="pt-16">
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
           {/* ── 页头 (static, rendered server-side for SEO) ──── */}
           <header className="mb-10 text-center">
@@ -134,8 +130,6 @@ export default async function BlogPage() {
           {/* ── Interactive client part (search, filter, cards) ── */}
           <BlogListClient initialArticles={articles} initialCount={count} />
         </div>
-      </main>
-      <Footer />
-    </div>
+    </PortalLayout>
   )
 }

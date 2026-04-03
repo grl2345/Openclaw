@@ -10,25 +10,12 @@ export function Hero() {
   const { t } = useI18n()
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[oklch(0.98_0.01_30)] pt-20 sm:pt-24 dark:bg-background">
+    <section className="relative overflow-hidden bg-[oklch(0.98_0.01_30)] dark:bg-background">
       <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.06] dark:opacity-[0.04]"
-          style={{
-            backgroundImage: `linear-gradient(to right, hsl(0 60% 70% / 0.5) 1px, transparent 1px),
-                            linear-gradient(to bottom, hsl(0 60% 70% / 0.5) 1px, transparent 1px)`,
-            backgroundSize: "48px 48px",
-          }}
-        />
-        <div className="absolute inset-0 hidden dark:block opacity-[0.15]" style={{
-          backgroundImage: "radial-gradient(circle, white 1.2px, transparent 1.2px)",
-          backgroundSize: "36px 36px",
-        }} />
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[500px] w-[700px] rounded-full bg-primary/[0.08] blur-[100px] dark:bg-primary/20" />
-        <div className="absolute bottom-0 right-0 h-[300px] w-[500px] rounded-full bg-primary/[0.05] blur-[80px] dark:bg-primary/10" />
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[300px] w-[600px] rounded-full bg-primary/[0.06] blur-[80px] dark:bg-primary/15" />
       </div>
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-4 pt-16 pb-20 sm:px-6 sm:pt-20 sm:pb-24 lg:px-8 lg:pt-24 lg:pb-28">
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
         {/* 开源免费 · 收录全网最全教程与用例 */}
         <div className="mb-5 flex flex-wrap items-center justify-center gap-2">
           <span className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-muted/60 px-3 py-1.5 text-sm font-medium text-foreground">
@@ -39,8 +26,8 @@ export function Hero() {
         </div>
 
         {/* Logo */}
-        <div className="logo-float mb-5 sm:mb-6">
-          <LobsterIcon size={180} className="h-[120px] w-[120px] sm:h-[160px] sm:w-[160px] lg:h-[180px] lg:w-[180px]" />
+        <div className="logo-float mb-4 sm:mb-5">
+          <LobsterIcon size={100} className="h-[80px] w-[80px] sm:h-[100px] sm:w-[100px]" />
         </div>
 
         {/* 大标题 */}
@@ -90,11 +77,6 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <div className="flex h-8 w-5 items-start justify-center rounded-full border-2 border-muted-foreground/30 p-1">
-          <div className="h-2 w-1 animate-bounce rounded-full bg-muted-foreground/50" />
-        </div>
-      </div>
     </section>
   )
 }

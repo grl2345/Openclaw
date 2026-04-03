@@ -1,8 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { PortalLayout } from "@/components/portal-layout"
 import { useI18n } from "@/lib/i18n"
 import { OFFICIAL_LINKS } from "@/lib/official-links"
 import { COMMUNITY_FEED_ITEMS } from "@/lib/news-feed"
@@ -78,9 +77,7 @@ export default function ManualPage() {
   })
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
-      <main className="pt-16">
+    <PortalLayout>
         <div className="relative mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
           {/* ── 页面标题 ────────────────────────────────────── */}
           <header className="mb-10 text-center">
@@ -261,8 +258,6 @@ export default function ManualPage() {
             </div>
           </section>
         </div>
-      </main>
-      <Footer />
-    </div>
+    </PortalLayout>
   )
 }

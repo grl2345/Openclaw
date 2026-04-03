@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { PortalLayout } from "@/components/portal-layout"
 import { ApiDocsClient } from "./api-docs-client"
 
 export const metadata: Metadata = {
@@ -11,12 +10,8 @@ export const metadata: Metadata = {
 
 export default function ApiDocsPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
-      <main className="pt-16">
+    <PortalLayout hideRightSidebar>
         <ApiDocsClient />
-      </main>
-      <Footer />
-    </div>
+    </PortalLayout>
   )
 }

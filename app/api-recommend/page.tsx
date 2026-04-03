@@ -1,8 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { PortalLayout } from "@/components/portal-layout"
 import { useI18n } from "@/lib/i18n"
 import {
   modelCategories,
@@ -57,10 +56,7 @@ export default function ApiRecommendPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
-
-      <main className="pt-16">
+    <PortalLayout hideRightSidebar>
         {/* Hero Section */}
         <div className="relative overflow-hidden border-b border-border/40">
           <div className="pointer-events-none absolute inset-0">
@@ -384,9 +380,6 @@ export default function ApiRecommendPage() {
             价格信息仅供参考，以各供应商官网最新定价为准。最后更新：{LAST_UPDATED}
           </p>
         </div>
-      </main>
-
-      <Footer />
-    </div>
+    </PortalLayout>
   )
 }

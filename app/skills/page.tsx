@@ -2,8 +2,7 @@
 
 import { useState, useMemo, useCallback } from "react"
 import Link from "next/link"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { PortalLayout } from "@/components/portal-layout"
 import { Badge } from "@/components/ui/badge"
 import { useI18n } from "@/lib/i18n"
 import { allSkills, allSkillCategories, type AllSkillCategoryId } from "@/lib/all-skills"
@@ -94,9 +93,7 @@ export default function SkillsPage() {
   }, [currentPage, totalPages])
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
-
+    <PortalLayout hideRightSidebar>
       {/* Background blobs */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute -left-40 top-20 h-96 w-96 rounded-full bg-primary/8 blur-[100px]" />
@@ -322,7 +319,6 @@ export default function SkillsPage() {
         )}
 
       </div>
-      <Footer />
-    </div>
+    </PortalLayout>
   )
 }
