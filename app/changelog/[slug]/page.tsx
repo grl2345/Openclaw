@@ -179,24 +179,38 @@ export default async function ChangelogDetailPage({
   const entry = getChangelog(slug)
   if (!entry) notFound()
 
+  const articleUrl = `${SITE_URL}/changelog/${entry.slug}`
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "TechArticle",
     headline: `OpenClaw ${entry.version} 版本发布说明`,
     description: entry.summary.zh,
-    image: `${SITE_URL}${entry.coverImage}`,
+    image: entry.coverImage
+      ? [`${SITE_URL}${entry.coverImage}`]
+      : [`${SITE_URL}/logo.webp`],
     datePublished: entry.releaseDate,
-    author: { "@type": "Person", name: entry.releasedBy },
+    dateModified: entry.releaseDate,
+    author: {
+      "@type": "Person",
+      name: entry.releasedBy || "OpenClaw Hub",
+    },
     publisher: {
       "@type": "Organization",
-      name: "OpenClaw",
-      url: "https://github.com/openclaw/openclaw",
+      name: "OpenClaw Hub",
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/logo.webp`,
+      },
     },
-    url: `${SITE_URL}/changelog/${entry.slug}`,
+    url: articleUrl,
+    mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
     about: {
       "@type": "SoftwareApplication",
       name: "OpenClaw",
       softwareVersion: entry.version,
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Cross-platform",
     },
   }
 

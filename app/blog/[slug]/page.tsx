@@ -61,12 +61,17 @@ export async function generateMetadata({
   }
 
   const title = article.title_zh || article.title_en
-  const description = article.excerpt_zh || article.excerpt_en
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.openclaw-s.com"
+  const fallback = `${title} — 来自 OpenClaw Hub 博客的原创教程与实战经验，帮你更快上手 OpenClaw 与 AI 智能助理。`
+  const rawDescription = article.excerpt_zh || article.excerpt_en || fallback
+  const description = rawDescription.length > 160 ? `${rawDescription.slice(0, 157)}…` : rawDescription
 
   return {
     title: `${title} - OpenClaw Hub`,
     description,
+    alternates: {
+      canonical: `${baseUrl}/blog/${article.slug}`,
+    },
     openGraph: {
       title,
       description,
@@ -105,20 +110,31 @@ export default async function ArticleDetailPage({
   const htmlContent = markdownToHtml(content)
   const words = countWords(content, "zh")
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.openclaw-s.com"
+  const articleUrl = `${baseUrl}/blog/${article.slug}`
+  const seoDescription =
+    excerpt || `${title} — 来自 OpenClaw Hub 博客的原创教程与实战经验。`
 
   // JSON-LD structured data for search engines
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: title,
-    description: excerpt,
-    url: `${baseUrl}/blog/${article.slug}`,
+    description: seoDescription,
+    url: articleUrl,
+    mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
     author: { "@type": "Person", name: article.author },
+    publisher: {
+      "@type": "Organization",
+      name: "OpenClaw Hub",
+      logo: { "@type": "ImageObject", url: `${baseUrl}/logo.webp` },
+    },
     ...(article.published_at ? { datePublished: article.published_at } : {}),
     ...(article.updated_at ? { dateModified: article.updated_at } : {}),
-    ...(article.cover_image ? { image: article.cover_image } : {}),
+    ...(article.cover_image ? { image: [article.cover_image] } : {}),
     wordCount: words,
-    keywords: article.tags.join(", "),
+    ...(article.tags && article.tags.length > 0
+      ? { keywords: article.tags.join(", ") }
+      : {}),
   }
 
   return (

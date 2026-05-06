@@ -33,9 +33,9 @@ export default function UseCaseDetailPage() {
   if (!useCase) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-background">
-        <h1 className="mb-4 text-2xl font-bold text-foreground">
+        <h2 className="mb-4 text-2xl font-bold text-foreground">
           {locale === "zh" ? "未找到该用例" : "Use case not found"}
-        </h1>
+        </h2>
         <Link href="/">
           <Button variant="outline">
             <ArrowLeft className="mr-2 h-4 w-4" />

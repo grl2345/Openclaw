@@ -5,13 +5,16 @@ import { PortalLayout } from "@/components/portal-layout"
 import { CHANGELOG } from "@/lib/changelog-data"
 import { History, ArrowRight, Users, GitBranch, ExternalLink } from "lucide-react"
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.openclaw-s.com"
+
 export const metadata: Metadata = {
-  title: "版本更新日志 | Changelog - OpenClaw",
+  title: "版本更新日志 - Changelog",
   description:
     "OpenClaw 各版本发布说明、新特性介绍与升级指南。Release notes, new features, and upgrade guides for every OpenClaw version.",
+  alternates: {
+    canonical: `${SITE_URL}/changelog`,
+  },
 }
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.openclaw-s.com"
 
 export default function ChangelogPage() {
   const jsonLd = {
@@ -23,9 +26,13 @@ export default function ChangelogPage() {
     itemListElement: CHANGELOG.map((entry, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      name: `OpenClaw ${entry.version}`,
       url: `${SITE_URL}/changelog/${entry.slug}`,
-      description: entry.summary.zh,
+      item: {
+        "@type": "TechArticle",
+        name: `OpenClaw ${entry.version}`,
+        url: `${SITE_URL}/changelog/${entry.slug}`,
+        description: entry.summary.zh,
+      },
     })),
   }
 

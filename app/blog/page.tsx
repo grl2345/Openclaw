@@ -8,10 +8,15 @@ import { getCategoryLabel, type Article } from "@/lib/blog"
 // Revalidate every 60 seconds so content stays fresh without hitting DB on every request
 export const revalidate = 60
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.openclaw-s.com"
+
 export const metadata: Metadata = {
-  title: "博客 & 教程 | Blog & Tutorials - OpenClaw Hub",
+  title: "博客 & 教程 - Blog & Tutorials",
   description:
-    "OpenClaw Hub 原创技术博客与实战教程，帮你更快掌握 AI 助理。Original technical blog posts and hands-on tutorials.",
+    "OpenClaw Hub 原创技术博客与实战教程，覆盖部署、技能开发、API 选型与最佳实践，帮你更快掌握 AI 助理。Original technical blog posts and hands-on tutorials.",
+  alternates: {
+    canonical: `${siteUrl}/blog`,
+  },
 }
 
 const LIMIT = 12
@@ -60,21 +65,31 @@ export default async function BlogPage() {
   const { articles, count } = await getPublishedArticles()
 
   // JSON-LD structured data for SEO
+  const blogBaseUrl = `${siteUrl}/blog`
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Blog",
     name: "OpenClaw Hub 博客 & 教程",
     description: "OpenClaw Hub 原创技术博客与实战教程",
-    url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.openclaw-s.com"}/blog`,
-    blogPost: articles.map((a) => ({
-      "@type": "BlogPosting",
-      headline: a.title_zh || a.title_en,
-      description: a.excerpt_zh || a.excerpt_en,
-      url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.openclaw-s.com"}/blog/${a.slug}`,
-      author: { "@type": "Person", name: a.author },
-      ...(a.published_at ? { datePublished: a.published_at } : {}),
-      ...(a.cover_image ? { image: a.cover_image } : {}),
-    })),
+    url: blogBaseUrl,
+    publisher: {
+      "@type": "Organization",
+      name: "OpenClaw Hub",
+      logo: { "@type": "ImageObject", url: `${siteUrl}/logo.webp` },
+    },
+    blogPost: articles.map((a) => {
+      const headline = a.title_zh || a.title_en
+      return {
+        "@type": "BlogPosting",
+        headline,
+        description:
+          a.excerpt_zh || a.excerpt_en || `${headline} — OpenClaw Hub 博客文章`,
+        url: `${blogBaseUrl}/${a.slug}`,
+        author: { "@type": "Person", name: a.author || "OpenClaw Hub" },
+        ...(a.published_at ? { datePublished: a.published_at } : {}),
+        ...(a.cover_image ? { image: [a.cover_image] } : {}),
+      }
+    }),
   }
 
   return (

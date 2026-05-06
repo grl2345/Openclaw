@@ -126,9 +126,20 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "OpenClaw Hub",
+              alternateName: "OpenClaw 导航",
               url: siteUrl,
+              inLanguage: ["zh-CN", "en"],
               description:
                 "面向新手和爱好者的 OpenClaw 一站式导航站，收录 800+ 技能、50+ 场景案例。",
+              publisher: {
+                "@type": "Organization",
+                name: "OpenClaw Hub",
+                url: siteUrl,
+                logo: {
+                  "@type": "ImageObject",
+                  url: `${siteUrl}/logo.webp`,
+                },
+              },
               potentialAction: {
                 "@type": "SearchAction",
                 target: {

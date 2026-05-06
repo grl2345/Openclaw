@@ -34,11 +34,15 @@ export function Footer() {
           <div>
             <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-muted-foreground">{t("footer.links")}</h3>
             <ul className="grid grid-cols-1 gap-y-2.5 sm:grid-cols-2 sm:gap-x-6">
-              <li><Link href="/#usecases" className={linkClass}>{t("nav.usecases")}</Link></li>
-              <li><Link href="/#categories" className={linkClass}>{t("nav.categories")}</Link></li>
+              <li><Link href="/skills" className={linkClass}>{t("nav.categories")}</Link></li>
+              <li><Link href="/usecases" className={linkClass}>{t("nav.usecases")}</Link></li>
               <li><Link href="/api-recommend" className={linkClass}>{t("nav.apiRecommend")}</Link></li>
               <li><Link href="/install" className={linkClass}>{t("nav.install")}</Link></li>
+              <li><Link href="/skills-guide" className={linkClass}>{isZh ? "技能指南" : "Skills Guide"}</Link></li>
+              <li><Link href="/blog" className={linkClass}>{isZh ? "博客 & 教程" : "Blog"}</Link></li>
+              <li><Link href="/changelog" className={linkClass}>{isZh ? "更新日志" : "Changelog"}</Link></li>
               <li><Link href="/news" className={linkClass}>{isZh ? "官方手册" : "Manual"}</Link></li>
+              <li><Link href="/about" className={linkClass}>{isZh ? "关于我们" : "About"}</Link></li>
               <li><Link href="/about#support" className={linkClass}>{t("footer.support")}</Link></li>
             </ul>
           </div>
@@ -106,11 +110,15 @@ export function Footer() {
             </summary>
             <div className="px-4 pb-4 pt-2">
               <ul className="grid grid-cols-2 gap-x-5 gap-y-2.5">
-                <li><Link href="/#usecases" className={linkClass}>{t("nav.usecases")}</Link></li>
-                <li><Link href="/#categories" className={linkClass}>{t("nav.categories")}</Link></li>
+                <li><Link href="/skills" className={linkClass}>{t("nav.categories")}</Link></li>
+                <li><Link href="/usecases" className={linkClass}>{t("nav.usecases")}</Link></li>
                 <li><Link href="/api-recommend" className={linkClass}>{t("nav.apiRecommend")}</Link></li>
                 <li><Link href="/install" className={linkClass}>{t("nav.install")}</Link></li>
+                <li><Link href="/skills-guide" className={linkClass}>{isZh ? "技能指南" : "Skills Guide"}</Link></li>
+                <li><Link href="/blog" className={linkClass}>{isZh ? "博客 & 教程" : "Blog"}</Link></li>
+                <li><Link href="/changelog" className={linkClass}>{isZh ? "更新日志" : "Changelog"}</Link></li>
                 <li><Link href="/news" className={linkClass}>{isZh ? "官方手册" : "Manual"}</Link></li>
+                <li><Link href="/about" className={linkClass}>{isZh ? "关于我们" : "About"}</Link></li>
                 <li><Link href="/about#support" className={linkClass}>{t("footer.support")}</Link></li>
               </ul>
             </div>
