@@ -1,69 +1,93 @@
 "use client"
 
+import { useEffect, useRef } from "react"
+
 /**
- * AdSlot — 广告位组件
+ * AdSlot — Google AdSense 广告位
  *
- * 支持多种尺寸和位置，预留占位 + 可选自定义内容。
- * 当没有真实广告时显示占位框，方便后续对接 Google AdSense 或其他广告平台。
+ * 注意：为了通过 AdSense 审核，绝对不要在没有真实广告时显示
+ * "广告位/AD/Advertisement" 字样的占位框 —— 谷歌会判定为
+ * "伪造广告位 / 鼓励点击" 或 "无库存内容"，直接拒审。
  *
- * 使用方式：
- *   <AdSlot slot="sidebar-top" />                    — 右侧栏顶部横幅
- *   <AdSlot slot="sidebar-mid" />                    — 右侧栏中部横幅
- *   <AdSlot slot="content-inline" />                 — 内容区行内广告
- *   <AdSlot slot="article-bottom" />                 — 文章底部广告
- *   <AdSlot slot="sidebar-top"><MyCustomAd /></AdSlot> — 自定义广告内容
+ * 行为：
+ *   - 配置了 NEXT_PUBLIC_ADSENSE_CLIENT 和 slot id 时，渲染真实 <ins class="adsbygoogle">
+ *   - 否则什么都不渲染（不占位、不显示文字）
  *
- * 对接 AdSense 时，在 children 中放入 <ins> 标签即可：
- *   <AdSlot slot="sidebar-top">
- *     <ins className="adsbygoogle" data-ad-client="ca-pub-xxx" data-ad-slot="yyy" ... />
- *   </AdSlot>
+ * 使用：
+ *   <AdSlot slot="content-inline" />
+ *   <AdSlot slot="sidebar-top" />
  */
 
+declare global {
+  interface Window {
+    adsbygoogle?: unknown[]
+  }
+}
+
+type SlotName =
+  | "sidebar-top"
+  | "sidebar-mid"
+  | "sidebar-bottom"
+  | "content-inline"
+  | "article-bottom"
+
 interface AdSlotProps {
-  /** 广告位标识，用于区分不同位置 */
-  slot: "sidebar-top" | "sidebar-mid" | "sidebar-bottom" | "content-inline" | "article-bottom"
-  /** 自定义广告内容（AdSense ins 标签、赞助图片等） */
+  slot: SlotName
   children?: React.ReactNode
-  /** 额外 className */
   className?: string
 }
 
-const slotConfig: Record<
-  AdSlotProps["slot"],
-  { minH: string; label: string; aspect?: string }
-> = {
-  "sidebar-top":    { minH: "h-[250px]", label: "广告位 · AD" },
-  "sidebar-mid":    { minH: "h-[200px]", label: "广告位 · AD" },
-  "sidebar-bottom": { minH: "h-[250px]", label: "广告位 · AD" },
-  "content-inline": { minH: "h-[90px]",  label: "广告位 · AD", aspect: "aspect-[728/90]" },
-  "article-bottom": { minH: "h-[250px]", label: "广告位 · AD", aspect: "aspect-[728/250]" },
+const ADSENSE_CLIENT =
+  process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "ca-pub-5612094173556578"
+
+// 把语义化的 slot 名映射成 AdSense 后台创建的 data-ad-slot ID。
+// 留空表示该位置暂未在 AdSense 后台创建广告单元，组件会安全地不渲染。
+const slotIdMap: Record<SlotName, string | undefined> = {
+  "sidebar-top": process.env.NEXT_PUBLIC_ADSENSE_SLOT_SIDEBAR_TOP,
+  "sidebar-mid": process.env.NEXT_PUBLIC_ADSENSE_SLOT_SIDEBAR_MID,
+  "sidebar-bottom": process.env.NEXT_PUBLIC_ADSENSE_SLOT_SIDEBAR_BOTTOM,
+  "content-inline": process.env.NEXT_PUBLIC_ADSENSE_SLOT_CONTENT_INLINE,
+  "article-bottom": process.env.NEXT_PUBLIC_ADSENSE_SLOT_ARTICLE_BOTTOM,
 }
 
 export function AdSlot({ slot, children, className = "" }: AdSlotProps) {
-  const config = slotConfig[slot]
+  const containerRef = useRef<HTMLDivElement>(null)
+  const pushedRef = useRef(false)
+  const slotId = slotIdMap[slot]
+  const hasRealAd = Boolean(slotId)
 
-  // If custom content is provided, render it directly
+  useEffect(() => {
+    if (!hasRealAd || pushedRef.current) return
+    try {
+      ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+      pushedRef.current = true
+    } catch {
+      // ignore — adsbygoogle 未就绪时不抛错
+    }
+  }, [hasRealAd])
+
+  // 自定义内容（例如自托管赞助）
   if (children) {
     return (
-      <div
-        className={`overflow-hidden rounded-xl border border-border/60 bg-card/50 ${className}`}
-        data-ad-slot={slot}
-      >
+      <div className={className} data-ad-slot={slot}>
         {children}
       </div>
     )
   }
 
-  // Placeholder when no ad is configured
+  // 未配置真实 slot id 时不渲染任何东西，避免出现"伪造广告位"
+  if (!hasRealAd) return null
+
   return (
-    <div
-      className={`flex items-center justify-center overflow-hidden rounded-xl border border-dashed border-border/50 bg-muted/20 ${config.minH} ${config.aspect ?? ""} ${className}`}
-      data-ad-slot={slot}
-    >
-      <div className="text-center">
-        <p className="text-[10px] font-medium text-muted-foreground/40">{config.label}</p>
-        <p className="text-[9px] text-muted-foreground/30">{slot}</p>
-      </div>
+    <div ref={containerRef} className={className} data-ad-slot={slot}>
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client={ADSENSE_CLIENT}
+        data-ad-slot={slotId}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
     </div>
   )
 }
