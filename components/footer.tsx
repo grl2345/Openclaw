@@ -189,11 +189,19 @@ export function Footer() {
             </Link>
             <span className="text-border">|</span>
             <Link href="/privacy" className="transition-colors hover:text-foreground">
-              {isZh ? "隐私政策" : "Privacy Policy"}
+              {isZh ? "隐私政策" : "Privacy"}
+            </Link>
+            <span className="text-border">|</span>
+            <Link href="/cookie-policy" className="transition-colors hover:text-foreground">
+              {isZh ? "Cookie 政策" : "Cookies"}
             </Link>
             <span className="text-border">|</span>
             <Link href="/terms" className="transition-colors hover:text-foreground">
-              {isZh ? "服务条款" : "Terms of Service"}
+              {isZh ? "服务条款" : "Terms"}
+            </Link>
+            <span className="text-border">|</span>
+            <Link href="/dmca" className="transition-colors hover:text-foreground">
+              {isZh ? "版权 / DMCA" : "DMCA"}
             </Link>
             <span className="text-border">|</span>
             <span>MIT License</span>

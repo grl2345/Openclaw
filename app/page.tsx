@@ -8,6 +8,7 @@ import { RightSidebar } from "@/components/right-sidebar"
 import { Hero } from "@/components/hero"
 import { QuickStart } from "@/components/quickstart"
 import { AdSlot } from "@/components/ad-slot"
+import { HomeIntro } from "@/components/home-intro"
 
 const LatestNews = dynamic(() => import("@/components/latest-news").then(m => ({ default: m.LatestNews })), {
   loading: () => <div className="py-12" />,
@@ -35,6 +36,11 @@ export default function Home() {
         <Hero />
       </div>
 
+      {/* Substantive intro for crawlers, AdSense reviewers and first-time visitors */}
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+        <HomeIntro />
+      </div>
+
       {/* Portal 3-column layout */}
       <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="flex gap-6">
@@ -44,7 +50,6 @@ export default function Home() {
           {/* Main Content */}
           <main className="min-w-0 flex-1">
             <LatestNews />
-            {/* Ad — content inline (between news and changelog) */}
             <AdSlot slot="content-inline" className="my-6" />
             <LatestChangelog />
             <FeaturedSkills />
