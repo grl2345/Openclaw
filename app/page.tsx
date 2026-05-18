@@ -45,7 +45,22 @@ export default function Home() {
           <main className="min-w-0 flex-1">
             <LatestNews />
             {/* Ad — content inline (between news and changelog) */}
-            <AdSlot slot="content-inline" className="my-6" />
+            <AdSlot slot="content-inline" className="my-6">
+              <a
+                href="https://www.adspower.net/share/jo3Dr8"
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                aria-label="AdsPower"
+                className="block"
+              >
+                <img
+                  src="https://app-global.adspower.net/static/jpg/reward_post_2_CN.w7UBcdZk.jpg"
+                  alt="AdsPower"
+                  loading="lazy"
+                  className="block w-full h-auto"
+                />
+              </a>
+            </AdSlot>
             <LatestChangelog />
             <FeaturedSkills />
             <FeaturedUseCases />
