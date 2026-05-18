@@ -36,8 +36,23 @@ export function RightSidebar() {
     <aside className="hidden xl:block w-64 shrink-0">
       <div className="sticky top-[4.5rem] max-h-[calc(100vh-5rem)] overflow-y-auto space-y-5 py-4 pb-8">
 
-        {/* Ad Slot — Top Banner (like TRAE ad in screenshot) */}
-        <AdSlot slot="sidebar-top" />
+        {/* Ad Slot — Top Banner (AdsPower) */}
+        <AdSlot slot="sidebar-top">
+          <a
+            href="https://www.adspower.net/share/jo3Dr8"
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            aria-label="AdsPower"
+            className="block"
+          >
+            <img
+              src="https://app-global.adspower.net/static/jpg/reward_post_1_CN.DotqRIAo.jpg"
+              alt="AdsPower"
+              loading="lazy"
+              className="block w-full h-auto"
+            />
+          </a>
+        </AdSlot>
 
         {/* Hot Skills */}
         <div className="rounded-xl border border-border/60 bg-card/50 p-4">
